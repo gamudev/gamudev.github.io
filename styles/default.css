@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css?family=Dosis");
+/* @import url('https://fonts.googleapis.com/css?family=Muli&display=swap'); */
+body {
+    background-color: black;
+    color: white;
+    font-family: 'Dosis', sans-serif !important;
+    /*'Press Start 2P' */
+}
+
+#Inicio{
+    align-items: center;
+    text-align: center !important;
+    width: 400px;
+    margin: auto;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top:50px;
+}
+
+#SobreMi {
+    margin-top: 100px;
+}
+
+#SobreMi > img {
+    display: block;
+    margin: auto;
+}
+
+#Portfolio{
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.apps{
+    margin-bottom: 20px;
+    margin-right: 20px;
+    background-color: white;
+    height: 110px;
+    overflow: hidden;
+}
+
+.apps>button{
+    max-width: 100%;
+}
+
+.apps>button>img{
+    border-radius: 25px;
+    border: solid #000000 1px;
+}
+
+
+#cabecera-nombre{
+    align-items: center;
+    text-align: center;
+    color: black;
+    size: 3em;
+    margin-bottom: 20px;
+}
+
+h2 {
+    align-items: center;
+    text-align: center;
+}
+
+
+#Contacto{
+    margin-top: 100px;
+    align-items: center;
+    text-align: center;
+    width: 500px;
+    margin: auto;
+    max-width: 100%;
+    margin-top: 20px;
+    margin-bottom: 100px;
+}
+
+#Contacto > a > img {
+    height: 75px;
+}
+
+.embed-container {
+    position: relative;
+    padding-bottom: 80%;
+    height: 0;
+    overflow: hidden;
+}
+
+.embed-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#closeModal{
+    font-size: 40px;
+    box-sizing: inherit;
+    opacity: 1;
+    border: solid #000000 1px;
+    margin-right: 20px;
+    margin-left: auto;
+}
+
+.containerApps{
+    margin: auto;
+    width: 950;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+}
+
+#cabeceraInicio {
+    color: slategrey;
+    size: 1em !important;
+
+}
