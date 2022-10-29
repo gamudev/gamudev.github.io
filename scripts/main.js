@@ -4,22 +4,22 @@ $(".apps > button").click(function(){
     console.log(id)
     switch(id){
         case 'buscaminas': 
-            $("#iframe-modal").attr("src","/Buscaminas/buscaminas.html");
+            $("#iframe-modal").attr("src","demo/Buscaminas/buscaminas.html");
             break;
         case 'calculadora':
-            $("#iframe-modal").attr("src", "/Calculadora/calculadora.html");
+            $("#iframe-modal").attr("src", "Demo/Calculadora/calculadora.html");
             break;
         case 'parejas':
-            $("#iframe-modal").attr("src", "/Encuentra Pareja Fruta/encuentraParejaFruta.html");
+            $("#iframe-modal").attr("src", "Demo/Encuentra Pareja Fruta/encuentraParejaFruta.html");
             break;
         case 'patron': 
-            $("#iframe-modal").attr("src", "/Patron desbloqueo/patronDesbloqueo.html");
+            $("#iframe-modal").attr("src", "Demo/Patron desbloqueo/patronDesbloqueo.html");
             break;
         case 'tresenraya':
-            $("#iframe-modal").attr("src", "/Tres En Raya/tresEnRaya.html");
+            $("#iframe-modal").attr("src", "Demo/Tres En Raya/tresEnRaya.html");
             break;
         case 'reloj':
-            $("#iframe-modal").attr("src", "/Reloj Digital/relojDigital.html"); 
+            $("#iframe-modal").attr("src", "Demo/Reloj digital/relojDigital.html");
             break;
     }
 
