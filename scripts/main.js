@@ -1,4 +1,4 @@
-$(".apps > button").click(function(){
+$(".apps > a").click(function(){
     console.log($(this))
     const id = $(this).attr("id");
     console.log(id)

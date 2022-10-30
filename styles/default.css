@@ -3,7 +3,7 @@ body {
     background-color: black;
     color: white;
     font-family: 'Dosis', sans-serif !important;
-    background-image: url("../img/fondo.jpg");
+    background-image: url("../img/fondo1.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -13,16 +13,15 @@ body {
 #Inicio{
     align-items: center;
     text-align: center !important;
-    width: 400px;
+    width: 350px;
     margin: auto;
     max-width: 100%;
     display: flex;
     flex-wrap: wrap;
-    margin-top:50px;
 }
 
 #SobreMi {
-    margin-top: 100px;
+    margin-top: 200px;
 }
 
 #SobreMi > img {
@@ -38,16 +37,15 @@ body {
 .apps{
     margin-bottom: 20px;
     margin-right: 20px;
-    background-color: white;
-    height: 110px;
     overflow: hidden;
+    align-items: center;
 }
 
-.apps>button{
+.apps>a{
     max-width: 100%;
 }
 
-.apps>button>img{
+.apps>a>img{
     border-radius: 25px;
     border: solid #000000 1px;
 }
@@ -76,6 +74,7 @@ h2 {
     max-width: 100%;
     margin-top: 20px;
     margin-bottom: 100px;
+    height: 500px;
 }
 
 #Contacto > a > img {
@@ -108,15 +107,19 @@ h2 {
 
 .containerApps{
     margin: auto;
-    width: 950;
+    width: 850px;
     max-width: 100%;
     display: flex;
     flex-wrap: wrap;
-    background-color: white;
+    align-items: center;
 }
 
 #cabeceraInicio {
     color: slategrey;
     size: 1em !important;
 
+}
+
+.espacio{
+    height: 100px;
 }
