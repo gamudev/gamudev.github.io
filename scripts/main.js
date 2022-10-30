@@ -4,7 +4,7 @@ $(".apps > a").click(function(){
     console.log(id)
     switch(id){
         case 'buscaminas': 
-            $("#iframe-modal").attr("src","demo/Buscaminas/buscaminas.html");
+            $("#iframe-modal").attr("src","Demo/Buscaminas/buscaminas.html");
             break;
         case 'calculadora':
             $("#iframe-modal").attr("src", "Demo/Calculadora/calculadora.html");
