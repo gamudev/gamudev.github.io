@@ -27,6 +27,7 @@ body {
 #SobreMi > img {
     display: block;
     margin: auto;
+    width: 400px;
 }
 
 #Portfolio{
@@ -48,6 +49,7 @@ body {
 .apps>a>img{
     border-radius: 25px;
     border: solid #000000 1px;
+    width: 200px;
 }
 
 
@@ -107,7 +109,7 @@ h2 {
 
 .containerApps{
     margin: auto;
-    width: 850px;
+    width: 450px;
     max-width: 100%;
     display: flex;
     flex-wrap: wrap;
