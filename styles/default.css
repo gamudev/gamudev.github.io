@@ -1,33 +1,65 @@
-@import url("https://fonts.googleapis.com/css?family=Dosis");
+@import url("https://fonts.googleapis.com/css?family=Maven+Pro");
 body {
     background-color: black;
     color: white;
-    font-family: 'Dosis', sans-serif !important;
-    background-image: url("../img/fondo1.jpg");
+    font-family: 'Maven Pro' !important;
+    background-image: url("../img/fondo.jpg");
     background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    max-width: 100%;
+    background-repeat: repeat-y;
+    background-size: contain;
+    /* max-width: 100%; */
 }
 
 #Inicio{
     align-items: center;
-    text-align: center !important;
-    width: 350px;
+    text-align: center;
+    width: 480px;
     margin: auto;
     max-width: 100%;
-    display: flex;
     flex-wrap: wrap;
 }
 
-#SobreMi {
+#Inicio>p{
+    align-items: center;
+    text-align: center;
+}
+
+#cabeceraInicio {
+    align-items: center;
+    text-align: center;
+    font-size: 1.8em ;
+}
+
+#cabeceraNombre {
+    color: black;
+    font-size: 2.8em;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+#cabeceraTexto {
+    color: black;
+    font-size: 1.4em;
+    margin-bottom: 20px;
+}
+
+.titulo {
+    align-items: center;
+    text-align: center;
+    font-size: 2.8em;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+#Curriculum {
     margin-top: 200px;
 }
 
-#SobreMi > img {
+#Curriculum > img {
     display: block;
     margin: auto;
-    width: 400px;
+    max-width: 100%;
+    height: auto;
 }
 
 #Portfolio{
@@ -37,35 +69,22 @@ body {
 
 .apps{
     margin-bottom: 20px;
-    margin-right: 20px;
     overflow: hidden;
     align-items: center;
 }
 
 .apps>a{
     max-width: 100%;
+    cursor: pointer;
 }
 
 .apps>a>img{
     border-radius: 25px;
     border: solid #000000 1px;
-    width: 200px;
+    /* width: 200px; */
+    max-width: 100%;
+    height: auto;
 }
-
-
-#cabecera-nombre{
-    align-items: center;
-    text-align: center;
-    color: black;
-    size: 3em;
-    margin-bottom: 20px;
-}
-
-h2 {
-    align-items: center;
-    text-align: center;
-}
-
 
 #Contacto{
     margin-top: 100px;
@@ -80,7 +99,7 @@ h2 {
 }
 
 #Contacto > a > img {
-    height: 75px;
+    height: 150px;
 }
 
 .embed-container {
@@ -109,17 +128,11 @@ h2 {
 
 .containerApps{
     margin: auto;
-    width: 450px;
+    width: 400px;
     max-width: 100%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-}
-
-#cabeceraInicio {
-    color: slategrey;
-    size: 1em !important;
-
 }
 
 .espacio{
