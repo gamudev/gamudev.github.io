@@ -6,8 +6,10 @@
     border-radius: 4px;
     font-family: 'Courier New', Courier, monospace;
     color: black;
-    font-size: 192px;
+    font-size: 20vw;
     background: royalblue;
     border: solid #000000 1px;
     text-decoration: none;
+    max-width: 100%;
+    height: auto;
 }
