@@ -3,8 +3,8 @@ button {
     text-shadow: 1px 1px 15px #666666;
     font-family: Arial;
     color: #ffffff;
-    font-size: 30px;
-    padding: 30px 40px;
+    font-size: 6vw;
+    padding: 7vw 8vw;
     background: cornflowerblue;
     border: solid #000000 1px;
     text-decoration: none;
@@ -15,8 +15,9 @@ input {
     border-radius: 4px;
     font-family: Arial;
     color: black;
-    font-size: 45px;
-    padding: 30px 40px;
+    font-size: 8vw;
+    font-weight: bold;
+    padding: 7vw 8vw;
     background: cornflowerblue;
     border: solid #000000 1px;
     text-decoration: none;
@@ -26,10 +27,8 @@ input {
 
 .calculadora {
     display: block;
-    margin: 20px auto;
-    padding: 20px;
     background-color: lightsteelblue;
-    width: 490px;
-    height: 550px;
-    border-radius: 25px;
+    width: 22.5vw;
+    height: 24.5vw;
+    border-radius: 1.5vw;
 }
