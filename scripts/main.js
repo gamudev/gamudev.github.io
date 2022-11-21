@@ -12,14 +12,14 @@ $(".apps > a").click(function(){
         case 'parejas':
             $("#iframe-modal").attr("src", "Demo/Encuentra Pareja Fruta/encuentraParejaFruta.html");
             break;
-        case 'patron': 
-            $("#iframe-modal").attr("src", "Demo/Patron desbloqueo/patronDesbloqueo.html");
+        case 'snake': 
+            $("#iframe-modal").attr("src", "Demo/Snake/snake.html");
             break;
         case 'tresenraya':
             $("#iframe-modal").attr("src", "Demo/Tres En Raya/tresEnRaya.html");
             break;
-        case 'reloj':
-            $("#iframe-modal").attr("src", "Demo/Reloj digital/relojDigital.html");
+        case 'tetris':
+            $("#iframe-modal").attr("src", "Demo/Tetris/tetris.html");
             break;
     }
 

@@ -1,0 +1,76 @@
+body{
+    pointer-events: none !important;
+    scroll-behavior: unset !important;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    /* background-color: #000000; */
+}
+
+#contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+#puntos {
+    color: rgb(47, 82, 255);
+    margin-left: 52px;
+    margin-bottom: 10px;
+}
+
+#contenedorConsola {
+    width: 94%;
+    display: flex;
+    flex-direction: column;
+}
+
+#contenedorJuego {
+    position: relative;
+}
+
+#juego {
+    position: absolute;
+    left: 23.8%;
+    top: 10%;
+    width: 52.4%;
+    height: 28.9%;
+    border: solid #000000 1px;
+    background-image: url("img/hierba.png");
+    background-size: contain;
+}
+
+#consola {
+    width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+    #contenedorConsola {
+        width: 65%;
+    }
+
+    body {
+        font-size: 20px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    #contenedorConsola {
+        width: 50%;
+    }
+
+    body {
+        font-size: 22px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    #contenedorConsola {
+        width: 35%;
+    }
+
+    body {
+        font-size: 24px;
+    }
+}
+
