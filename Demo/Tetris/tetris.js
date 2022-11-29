@@ -1,5 +1,6 @@
 $(document).ready(function () {
-    
+
+    const isMobile = navigator.userAgentData.mobile;
     const HEIGHT = $("#juego").attr("height");
     const WIDTH = $("#juego").attr("width");
     const TAMAÑO_UNIDAD = 20;
@@ -44,6 +45,9 @@ $(document).ready(function () {
     iniciarJuego();
 
     function iniciarJuego(){
+        if (isMobile){
+            añadirBotones();
+        }
         direccion = '';
         figuras = [];
         pause = false;
@@ -325,5 +329,31 @@ $(document).ready(function () {
                 break;
         }
     });
+
+    function añadirBotones(){
+        let botonIzquierda = $('<input id="botonIzquierda" type="button"  value="⇦"/>');
+        let botonAbajo = $('<input id="botonAbajo" type="button" value="⇩"/>');
+        let botonDerecha = $('<input id="botonDerecha" type="button" value="⇨"/>');
+        $("body").append(botonIzquierda);
+        $("body").append(botonAbajo);
+        $("body").append(botonDerecha);
+        $("#botonIzquierda").click(function (e) {
+            direccion = BOTON.IZQUIERDA;
+        });
+        $("#botonAbajo").click(function (e) {
+            velocidadMovimiento = 10;
+        });
+        $("#botonDerecha").click(function (e) {
+            direccion = BOTON.DERECHA;
+        });
+        $("#contenedorJuego").click(function (e) {
+            if (pause === false) {
+                pause = true;
+            } else {
+                pause = false;
+                mover(figuraPendiente);
+            };
+        });
+    }
 
 });
