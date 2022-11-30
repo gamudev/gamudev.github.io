@@ -280,12 +280,19 @@ $(document).ready(function () {
         context.beginPath();
         context.fillStyle = '#FF003B';
         context.strokeStyle = "black"
-        context.font = "45pt Impact";
-        context.fillText("GAME OVER", 28, 200);
-        context.strokeText("GAME OVER", 28, 200);
-        context.font = '25pt Impact';
-        context.fillText("Press ENTER to restart", 10, 240);
-        context.strokeText("Press ENTER to restart", 10, 240);
+        context.font = "60px Impact";
+        context.fillText("GAME OVER", 30, 200);
+        context.strokeText("GAME OVER", 30, 200);
+        context.font = '30px Impact';
+        if (isMobile){
+            press = "SCREEN";
+            position = 20;
+        } else {
+            press = "ENTER";
+            position = 30;
+        }
+        context.fillText("Press " + press + " to restart", position, 240);
+        context.strokeText("Press " + press + " to restart", position, 240);
         context.stroke();
     }
 
@@ -296,11 +303,11 @@ $(document).ready(function () {
 
     function pintarPuntuación(){
         context.beginPath();
-        context.fillStyle = 'white';
+        context.fillStyle = 'black';
         context.strokeStyle = "black"
-        context.font = '20pt Impact';
-        context.fillText("Points: " + puntuación, 2, 24);
-        context.strokeText("Points: " + puntuación, 2, 24);
+        context.font = '20px Impact';
+        context.fillText("Points: " + puntuación, 4, 24);
+        // context.strokeText("Points: " + puntuación, 2, 24);
         context.stroke();
     }
 

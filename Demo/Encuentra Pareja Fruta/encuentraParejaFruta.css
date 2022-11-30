@@ -4,8 +4,10 @@ body {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 .fruta, .acertada {
-    width: 15vw;
-    height: 15vw;
+    width: 20vw;
+    height: 20vw;
+    max-height: 200px;
+    max-width: 200px;
     border-radius: 4vw;
     border: solid #000000 0.05vw;
     margin-right: 0.25vw;
@@ -15,7 +17,7 @@ body {
 .titulo {
     margin-top: 1.5vw;
     text-align: center;
-    font-size:  2.5vw;
+    font-size:  3.5vw;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
 }
@@ -30,8 +32,8 @@ body {
 
 #tablero{
     margin: auto;
-    width: 64vw;
-    max-width: 100%;
+    width: 84vw;
+    max-width: 830px;
     display: flex;
     flex-wrap: wrap;
 }
