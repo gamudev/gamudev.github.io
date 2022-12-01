@@ -40,14 +40,15 @@ $(document).ready(function () {
         ENTER:13,
     }
 
-    const COLOR = [,'blue','yellow','purple','orange','green', 'brown'];
+    const COLOR = ['blue','yellow','purple','orange','green', 'brown'];
+
+    if (isMobile) {
+        añadirBotones();
+    }
 
     iniciarJuego();
 
     function iniciarJuego(){
-        if (isMobile){
-            añadirBotones();
-        }
         direccion = '';
         figuras = [];
         pause = false;
@@ -62,7 +63,7 @@ $(document).ready(function () {
 
     function nuevaPieza(){
         siguienteFigura = false;
-        let tipoFigura = Math.round(Math.random() * 5);
+        let tipoFigura = Math.floor(Math.random() * 7);
         let figura = crearFigura(tipoFigura);
         console.log(figura);
         figuras.push(figura);
@@ -151,7 +152,7 @@ $(document).ready(function () {
                     { ...POS.abajoDer, posicion: ['techo', 'suelo', 'derecha'] }
                 ]; break;
         }
-        return { id:numeroFiguras,tipoFigura, puntos, siguienteFigura: false, color: COLOR[Math.round(Math.random() * 6)] };
+        return { id: numeroFiguras, tipoFigura, puntos, siguienteFigura: false, color: COLOR[Math.floor(Math.random() * 6)] };
     }
 
     function pintarFigura(figura){
@@ -280,19 +281,13 @@ $(document).ready(function () {
         context.beginPath();
         context.fillStyle = '#FF003B';
         context.strokeStyle = "black"
-        context.font = "60px Impact";
-        context.fillText("GAME OVER", 30, 200);
-        context.strokeText("GAME OVER", 30, 200);
-        context.font = '30px Impact';
-        if (isMobile){
-            press = "SCREEN";
-            position = 20;
-        } else {
-            press = "ENTER";
-            position = 30;
-        }
-        context.fillText("Press " + press + " to restart", position, 240);
-        context.strokeText("Press " + press + " to restart", position, 240);
+        context.font = "50px Impact";
+        context.textAlign = 'center';
+        context.fillText("GAME OVER", (WIDTH / 2), 200);
+        context.strokeText("GAME OVER", (WIDTH / 2), 200);
+        context.font = "25px Impact";
+        context.fillText("Press " + (isMobile ? "SCREEN" : "ENTER") + " to restart", (WIDTH / 2), 240);
+        context.strokeText("Press " + (isMobile ? "SCREEN" : "ENTER") + " to restart", (WIDTH / 2), 240);
         context.stroke();
     }
 
@@ -306,6 +301,7 @@ $(document).ready(function () {
         context.fillStyle = 'black';
         context.strokeStyle = "black"
         context.font = '20px Impact';
+        context.textAlign = "left";
         context.fillText("Points: " + puntuación, 4, 24);
         // context.strokeText("Points: " + puntuación, 2, 24);
         context.stroke();
@@ -354,6 +350,9 @@ $(document).ready(function () {
             direccion = BOTON.DERECHA;
         });
         $("#contenedorJuego").click(function (e) {
+            if (terminar) {
+                iniciarJuego();
+            } 
             if (pause === false) {
                 pause = true;
             } else {
