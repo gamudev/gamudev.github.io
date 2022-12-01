@@ -72,7 +72,7 @@ $(document).ready(function () {
 
     function mover(nuevaFigura){
         context.clearRect(0, 0, WIDTH, HEIGHT);
-        puntuacion();
+        actualizarPuntuacion();
         for(let figura of figuras){
             pintarFigura(figura);
         }
@@ -287,23 +287,25 @@ $(document).ready(function () {
         context.strokeText("GAME OVER", (WIDTH / 2), 200);
         context.font = "25px Impact";
         context.fillText("Press " + (isMobile ? "SCREEN" : "ENTER") + " to restart", (WIDTH / 2), 240);
-        context.strokeText("Press " + (isMobile ? "SCREEN" : "ENTER") + " to restart", (WIDTH / 2), 240);
+        if (!isMobile){
+            context.strokeText("Press ENTER to restart", (WIDTH / 2), 240);
+        }
         context.stroke();
     }
 
-    function puntuacion(){
-        puntuación = lineasCompletas;
-        pintarPuntuación();
+    function actualizarPuntuacion(){
+        puntuacion = lineasCompletas;
+        pintarPuntuacion();
     }
 
-    function pintarPuntuación(){
+    function pintarPuntuacion(){
         context.beginPath();
-        context.fillStyle = 'black';
+        context.fillStyle = 'white';
         context.strokeStyle = "black"
         context.font = '20px Impact';
         context.textAlign = "left";
-        context.fillText("Points: " + puntuación, 4, 24);
-        // context.strokeText("Points: " + puntuación, 2, 24);
+        context.fillText("Points: " + puntuacion, 2, 24);
+        context.strokeText("Points: " + puntuacion, 2, 24);
         context.stroke();
     }
 
