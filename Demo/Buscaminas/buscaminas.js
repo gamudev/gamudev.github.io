@@ -10,7 +10,8 @@ $("#iniciarBuscaminas").click(function(){
             $("#tablero").append("<button id='casilla" + (i * 10 + j) + "' class='tablero'></button>");
         }
     }
-    $("#tablero").css("width",40*tamaño);
+    $("#tablero").css("width", 30 * tamaño + "px");
+    $("#tablero").css("height", 30 * tamaño + "px");
     // $("#mensajes").css("visibility","hidden");
     colocarBombas(tamaño);
     addEvents();
