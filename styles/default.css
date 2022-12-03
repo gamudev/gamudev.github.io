@@ -62,6 +62,146 @@ body {
     height: auto;
 }
 
+#resume {
+    margin-top: 200px;
+}
+
+.resume-icon {
+    margin-bottom: 80px;
+    text-align: center;
+}
+
+.resume-icon li:last-child {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.resume-icon li {
+    display: inline-block;
+    padding: 10px 30px;
+    background: #444;
+    color: #fff;
+    border-radius: 30px;
+    margin: 0 -2px;
+    cursor: pointer;
+}
+
+.resume-icon li:first-child {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.resume-icon .active {
+    background: #121212;
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+ol,
+ul {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    text-decoration: none !important;
+    list-style: none !important;
+    outline: none !important;
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+.resume-content {
+    padding-left: 10%;
+}
+
+@media screen and (min-width: 1000px) {
+    .resume-content {
+        padding-left: 15%;
+    }
+}
+
+@media screen and (min-width: 1350px) {
+    .resume-content {
+        padding-left: 25%;
+    }
+}
+
+.resume-content li {
+    border-left: 1px solid #f4f4f4;
+    padding-left: 50px;
+    padding-bottom: 50px;
+    position: relative;
+}
+
+.resume-content li:after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: -5px;
+    width: 10px;
+    height: 10px;
+    background: #d6b161;
+    background-image: initial;
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: rgb(214, 177, 97);
+    border-radius: 50%;
+}
+
+.resume-content li h6 {
+    margin-bottom: 10px;
+}
+
+.sm-title {
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.resume-content li .date {
+    font-size: 18px;
+    color: #d6b161;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.resume-content li p {
+    line-height: 1.8;
+    margin: 0;
+    font-size: 16px;
+    color: #7e7e7e;
+    font-weight: bold;
+}
+
 #Portfolio{
     margin-top: 100px;
     margin-bottom: 100px;

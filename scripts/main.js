@@ -22,15 +22,13 @@ $(".apps > a").click(function(){
             $("#iframe-modal").attr("src", "Demo/Tetris/tetris.html");
             break;
     }
+});
 
-    
-
-    // var myModal = document.getElementById('myModal')
-    // var myInput = document.getElementById('myInput')
-
-    // myModal.addEventListener('shown.bs.modal', function () {
-    //     myInput.focus()
-    // })
+$(".resume-icon > ul > li").click(function () {
+    $(".resume-icon > ul > li").attr("class", "");
+    $(this).attr("class", "active");
+    $(".resume-content > div").attr("style","display: none")
+    $("#" + $(this).attr("data")).attr("style", "");
 
 });
 

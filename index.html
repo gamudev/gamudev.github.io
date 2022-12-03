@@ -29,7 +29,7 @@
                         <a class="nav-link" aria-current="page" href="#Inicio">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#Curriculum">Currículum</a>
+                        <a class="nav-link" href="#resume">Currículum</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#Portfolio">Portfolio</a>
@@ -45,14 +45,90 @@
         <div class="espacio"></div>
         <p id="cabeceraInicio">DESARROLLO DE APLICACIONES Y PÁGINAS WEB </p>
         <p id="cabeceraNombre">MI NOMBRE ES JAVIER GARCÍA, FULL-STACK DEVELOPER. </p>
-        <p id="cabeceraTexto">Esta página es el reflejo del esfuerzo para crecer como profesional dentro de la industria del desarrollo
+        <p id="cabeceraTexto">Esta página es el reflejo del esfuerzo para crecer como profesional dentro de la industria
+            del desarrollo
             del software. Me he especializado en desarrollo de aplicaciones y páginas web.</p>
     </div>
-    <div id="Curriculum">
+    <!-- <div id="Curriculum">
         <div class="espacio"></div>
         <p class="titulo">CURRICULUM VITAE</p>
         <img src="img/curriculum.JPG">
+    </div> -->
+
+    <div id="resume">
+        <div class="espacio"></div>
+        <div class="resume-icon">
+            <ul>
+                <li id="resume-icon-1" class="active" data="resume-content-1">
+                    <h6 class="resume-icon-title">EXPERIENCIA</h6>
+                </li>
+                <li id="resume-icon-2" data="resume-content-2">
+                    <h6 class="resume-icon-title">ESTUDIOS</h6>
+                </li>
+            </ul>
+        </div>
+
+        <div class="resume-content">
+            <div id="resume-content-1" class="item active">
+                <div class="content">
+                    <ul>
+                        <li>
+                            <h6 class="sm-title">Full-Stack Developer - Avalon Informática y Servicios</h6>
+                            <span class="date">Junio 2021 - Actualidad</span>
+                            <p> Tecnologías:
+                                Java, Javascript, Spring, Hibernate, PostgreSQL
+                            </p>
+                        </li>
+                        <li>
+                            <h6 class="sm-title">Digital Transformation Intern - Telefónica</h6>
+                            <span class="date">Enero 2021 - Junio 2021</span>
+                            <p> Tecnologías:
+                                Azure, Virtual Machines, Linux
+                            </p>
+                        </li>
+                        <li>
+                            <h6 class="sm-title">Software Developer - NTT Data</h6>
+                            <span class="date">Marzo 2019 - Julio 2020</span>
+                            <p> Tecnologías:
+                                C, Java, SQL, Bash, CVS, GIT
+                            </p>
+                        </li>
+                        <li>
+                            <h6 class="sm-title">Software Developer Intern - NTT Data</h6>
+                            <span class="date">Febrero 2012 - Marzo 2019</span>
+                            <p> Tecnologías:
+                                C, Java, SQL, Bash, CVS
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="resume-content-2" class="item" style="display: none;">
+                <div class="content">
+                    <ul id="ul-cursos">
+                        <li>
+                            <h6 class="sm-title">GRADO EN INGENIERÍA DEL SOFTWARE</h6>
+                            <span class="date">2014 - 2020 - UNIVERSIDAD POLITÉCNICA DE MADRID</span>
+                            <p>Tecnologías:
+                                Java, C, C++, ADA, Python 
+                            </p>
+                        </li>
+                        <li>
+                            <a href="docs/PFG.pdf" target="_blank">
+                                <h6 class="sm-title">PFG CRIPTOGRAFÍA DE CURVAS ELÍPTICAS Y REDES NEURONALES</h6>
+                                <span class="date">2022 - UNIVERSIDAD POLITÉCNICA DE MADRID</span>
+                                <p>Tecnologías:
+                                    Python, Criptografía de Curvas Elípticas, Redes Neuronales
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
+
     <div id="Portfolio">
         <div class="espacio"></div>
         <p class="titulo">MIS PROYECTOS</p>
@@ -95,18 +171,21 @@
                 <div id="modalContent " class="modal-content">
                     <button id="closeModal" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     <div class="embed-container">
-                        <iframe id='iframe-modal' frameborder="0" allowfullscreen scrolling="no" style="overflow:hidden">
+                        <iframe id='iframe-modal' frameborder="0" allowfullscreen scrolling="no"
+                            style="overflow:hidden">
                         </iframe>
                     </div>
                 </div>
             </div>
         </div>
-    </div>      
+    </div>
     <div id="Contacto">
         <div class="espacio"></div>
         <p class="titulo">CONTACTO</p>
-        <a href="https://github.com/gamudev" target="_blank"><img src="img/github.png" alt="icono github"/></a>
-        <a href="https://www.linkedin.com/in/javier-garcia-mu%C3%B1oz/" target="_blank"><img src="img/linkedin.png"  alt="icono linkedin"/></a>
+        <a href="https://github.com/gamudev" target="_blank"><img src="img/github.png" alt="icono github" /></a>
+        <a href="https://www.linkedin.com/in/javier-garcia-mu%C3%B1oz/" target="_blank"><img src="img/linkedin.png"
+            alt="icono linkedin" /></a>
+        <a href="docs/cv.pdf" target="_blank"><img src="img/cv.png" style="height: 120px" alt="icono curriculum" /></a>
     </div>
     <script src="scripts/main.js"></script>
 </body>
