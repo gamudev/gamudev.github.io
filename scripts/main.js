@@ -33,3 +33,23 @@ $(".resume-icon > ul > li").click(function () {
 });
 
 
+
+$("#anteriorApp").click(function(){
+    let id = $(".apps[style='display:block']").attr("id");
+    $("#" + id).attr("style","display: none")
+    if (id.substring(4) == 0){
+        $("#app" + 5).attr("style","display:block");
+    } else {
+        $("#" + id.substring(0, 3) + (id.substring(4) - 1)).attr("style", "display:block");
+    }
+})
+
+$("#siguienteApp").click(function () {
+    let id = $(".apps[style='display:block']").attr("id");
+    $("#" + id).attr("style", "display: none");
+    if (id.substring(4) == 5) {
+        $("#app" + 0).attr("style", "display:block");
+    } else {
+        $("#" + id.substring(0, 3) + (id.substring(4) + 1)).attr("style", "display:block");
+    }
+})

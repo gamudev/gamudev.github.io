@@ -42,20 +42,16 @@
         </div>
     </nav>
     <div id="Inicio">
-        <div class="espacio"></div>
+        <div style="height:60px"></div>
         <p id="cabeceraInicio">DESARROLLO DE APLICACIONES Y PÁGINAS WEB </p>
         <p id="cabeceraNombre">MI NOMBRE ES JAVIER GARCÍA, FULL-STACK DEVELOPER. </p>
         <p id="cabeceraTexto">Esta página es el reflejo del esfuerzo para crecer como profesional dentro de la industria
             del desarrollo
             del software. Me he especializado en desarrollo de aplicaciones y páginas web.</p>
+        <img src="img/iconJGM.png" style="height: 200px" alt="icono JGM" />
     </div>
-    <!-- <div id="Curriculum">
-        <div class="espacio"></div>
-        <p class="titulo">CURRICULUM VITAE</p>
-        <img src="img/curriculum.JPG">
-    </div> -->
-
     <div id="resume">
+        <hr>
         <div class="espacio"></div>
         <div class="resume-icon">
             <ul>
@@ -130,41 +126,44 @@
     </div>
 
     <div id="Portfolio">
+        <hr>
         <div class="espacio"></div>
         <p class="titulo">MIS PROYECTOS</p>
         <div class="containerApps">
-            <div class="apps">
+            <button id="anteriorApp" class="buttonApps">↑</button>
+            <div id="app0" class="apps" style="display:block">
                 <a id="tetris" data-bs-toggle="modal" data-bs-target="#modalApp">
                     <img width="400" src="img/tetris.JPG" alt="tetris">
                 </a>
             </div>
-            <div class="apps">
+            <div id="app1" class="apps" style="display: none">
                 <a id="snake" data-bs-toggle="modal" data-bs-target="#modalApp">
                     <img width="400" src="img/snake.JPG" alt="snake">
                 </a>
             </div>
-            <div class="apps">
+            <div id="app2" class="apps" style="display: none">
                 <a id="tresenraya" data-bs-toggle="modal" data-bs-target="#modalApp">
                     <img width="400" src="img/tresenraya.JPG" alt="tres en raya">
                 </a>
             </div>
-            <div class="apps">
+            <div id="app3" class="apps" style="display: none">
                 <a id="calculadora" data-bs-toggle="modal" data-bs-target="#modalApp">
                     <img width="400" src="img/calculadora.JPG" alt="calculadora">
                 </a>
             </div>
-            <div class="apps">
+            <div id="app4" class="apps" style="display: none">
                 <a id="buscaminas" data-bs-toggle="modal" data-bs-target="#modalApp">
                     <img width="400" src="img/buscaminas.JPG" alt="buscaminas">
                 </a>
             </div>
-            <div class="apps">
+            <div id="app5" class="apps" style="display: none">
                 <a id="parejas" data-bs-toggle="modal" data-bs-target="#modalApp">
                     <img width="400" src="img/parejas.JPG" alt="parejas">
                 </a>
             </div>
+            <button id="siguienteApp" class="buttonApps">↓</button>
         </div>
-
+        
         <!-- Modal -->
         <div class="modal fade" id="modalApp">
             <div class="modal-dialog modal-fullscreen">
@@ -180,12 +179,14 @@
         </div>
     </div>
     <div id="Contacto">
+        <hr>
         <div class="espacio"></div>
         <p class="titulo">CONTACTO</p>
+        <a href="https://twitter.com/gamudev" target="_blank"><img src="img/twitter.png" alt="icono github" /></a>
         <a href="https://github.com/gamudev" target="_blank"><img src="img/github.png" alt="icono github" /></a>
         <a href="https://www.linkedin.com/in/javier-garcia-mu%C3%B1oz/" target="_blank"><img src="img/linkedin.png"
             alt="icono linkedin" /></a>
-        <a href="docs/cv.pdf" target="_blank"><img src="img/cv.png" style="height: 120px" alt="icono curriculum" /></a>
+        <a href="docs/cv.pdf" target="_blank"><img src="img/cv.png" style="height: 80px" alt="icono curriculum" /></a>
     </div>
     <script src="scripts/main.js"></script>
 </body>

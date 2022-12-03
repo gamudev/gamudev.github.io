@@ -10,16 +10,16 @@ body {
     /* max-width: 100%; */
 }
 
-#Inicio{
+#Inicio {
     align-items: center;
     text-align: center;
-    width: 480px;
+    width: 600px;
     margin: auto;
     max-width: 100%;
     flex-wrap: wrap;
 }
 
-#Inicio>p{
+#Inicio>p {
     align-items: center;
     text-align: center;
 }
@@ -49,17 +49,6 @@ body {
     font-size: 2.8em;
     font-weight: bold;
     margin-bottom: 40px;
-}
-
-#Curriculum {
-    margin-top: 200px;
-}
-
-#Curriculum > img {
-    display: block;
-    margin: auto;
-    max-width: 100%;
-    height: auto;
 }
 
 #resume {
@@ -134,7 +123,19 @@ ul {
 }
 
 .resume-content {
-    padding-left: 10%;
+    padding-left: 0%;
+}
+
+@media screen and (min-width: 400px) {
+    .resume-content {
+        padding-left: 5%;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .resume-content {
+        padding-left: 10%;
+    }
 }
 
 @media screen and (min-width: 1000px) {
@@ -151,16 +152,16 @@ ul {
 
 .resume-content li {
     border-left: 1px solid #f4f4f4;
-    padding-left: 50px;
-    padding-bottom: 50px;
+    padding-left: 35px;
+    padding-bottom: 40px;
     position: relative;
 }
 
 .resume-content li:after {
     content: "";
     position: absolute;
-    top: 0px;
-    left: -5px;
+    top: 7px;
+    left: 0px;
     width: 10px;
     height: 10px;
     background: #d6b161;
@@ -208,7 +209,6 @@ ul {
 }
 
 .apps{
-    margin-bottom: 20px;
     overflow: hidden;
     align-items: center;
 }
@@ -239,7 +239,7 @@ ul {
 }
 
 #Contacto > a > img {
-    height: 150px;
+    height: 100px;
 }
 
 #modalApp{
@@ -286,5 +286,22 @@ ul {
 }
 
 .espacio{
-    height: 100px;
+    height: 60px;
+}
+
+
+hr {
+    border-top: 3px solid black !important;
+}
+
+.buttonApps {
+    position: relative;
+    /* top: 450px; */
+    /* left: 10px; */
+    height: 40px;
+    width: 400px;
+    font-size: 25px;
+    background-color: transparent;
+    border-color: #444;
+    border-radius: 15px;
 }
