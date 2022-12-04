@@ -73,6 +73,7 @@ body {
     border-radius: 30px;
     margin: 0 -2px;
     cursor: pointer;
+    width: 130px;
 }
 
 .resume-icon li:first-child {
@@ -124,29 +125,34 @@ ul {
 
 .resume-content {
     padding-left: 0%;
+    padding-right: 5%;
 }
 
 @media screen and (min-width: 400px) {
     .resume-content {
         padding-left: 5%;
+        padding-right: 5%;
     }
 }
 
 @media screen and (min-width: 600px) {
     .resume-content {
         padding-left: 10%;
+        padding-right: 10%;
     }
 }
 
 @media screen and (min-width: 1000px) {
     .resume-content {
         padding-left: 15%;
+        padding-right: 15%;
     }
 }
 
 @media screen and (min-width: 1350px) {
     .resume-content {
         padding-left: 25%;
+        padding-right: 20%;
     }
 }
 
@@ -291,21 +297,22 @@ ul {
 
 
 hr {
+    position: relative;
     border-top: 3px solid black !important;
+    width: 50%;
+    left: 25%;
 }
 
 .buttonApps {
     position: relative;
+    margin-top: 5px;
+    margin-bottom: 5px;
     /* top: 450px; */
-    /* left: 10px; */
+    left: 37%;
     height: 40px;
-    width: 400px;
+    width: 26%;
     font-size: 25px;
     background-color: transparent;
     border-color: #444;
     border-radius: 15px;
-}
-
-a{
-    color: unset !important;
 }
