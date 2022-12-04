@@ -36,20 +36,22 @@ $(".resume-icon > ul > li").click(function () {
 
 $("#anteriorApp").click(function(){
     let id = $(".apps[style='display:block']").attr("id");
-    $("#" + id).attr("style","display: none")
-    if (id.substring(4) == 0){
-        $("#app" + 5).attr("style","display:block");
+    $("#" + id).attr("style","display: none");
+    let newPos = Number(id.slice(3));
+    if (newPos == 0){
+        $("#app5").attr("style","display:block");
     } else {
-        $("#" + id.substring(0, 3) + (id.substring(4) - 1)).attr("style", "display:block");
+        $("#" + id.substring(0, 3) + (newPos - 1)).attr("style", "display:block");
     }
 })
 
 $("#siguienteApp").click(function () {
     let id = $(".apps[style='display:block']").attr("id");
     $("#" + id).attr("style", "display: none");
-    if (id.substring(4) == 5) {
-        $("#app" + 0).attr("style", "display:block");
+    let newPos = Number(id.slice(3));
+    if (newPos == 5) {
+        $("#app0").attr("style", "display:block");
     } else {
-        $("#" + id.substring(0, 3) + (id.substring(4) + 1)).attr("style", "display:block");
+        $("#" + id.substring(0, 3) + (newPos + 1)).attr("style", "display:block");
     }
 })
