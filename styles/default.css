@@ -164,7 +164,7 @@ ul {
     left: 0px;
     width: 10px;
     height: 10px;
-    background: #d6b161;
+    background: #468fdd;
     background-image: initial;
     background-position-x: initial;
     background-position-y: initial;
@@ -172,7 +172,7 @@ ul {
     background-attachment: initial;
     background-origin: initial;
     background-clip: initial;
-    background-color: rgb(214, 177, 97);
+    background-color: #468fdd;
     border-radius: 50%;
 }
 
@@ -190,7 +190,7 @@ ul {
 
 .resume-content li .date {
     font-size: 18px;
-    color: #d6b161;
+    color: #468fdd;
     margin-bottom: 15px;
     font-weight: bold;
 }
@@ -304,4 +304,8 @@ hr {
     background-color: transparent;
     border-color: #444;
     border-radius: 15px;
+}
+
+a{
+    color: unset !important;
 }
