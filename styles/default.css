@@ -3,11 +3,9 @@ body {
     background-color: black;
     color: white;
     font-family: 'Maven Pro' !important;
-    background-image: url("../img/fondo.jpg");
     background-position: center;
     background-repeat: repeat-y;
     background-size: contain;
-    /* max-width: 100%; */
 }
 
 #Inicio {
@@ -157,7 +155,7 @@ ul {
 }
 
 .resume-content li {
-    border-left: 1px solid #f4f4f4;
+    border-left: 1px solid #d2e8fff5;
     padding-left: 35px;
     padding-bottom: 40px;
     position: relative;
@@ -166,8 +164,8 @@ ul {
 .resume-content li:after {
     content: "";
     position: absolute;
-    top: 7px;
-    left: 0px;
+    top: 6px;
+    left: -5px;
     width: 10px;
     height: 10px;
     background: #468fdd;
