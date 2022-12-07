@@ -1,22 +1,26 @@
 let bombas = [];
 let casillasProximas = [];
-var tamaño = 10;
+const tamaño = 10;
 
-$("#iniciarBuscaminas").click(function(){
-    tamaño = Number($("#tamaño").val());
+iniciarBuscaminar();
+
+function iniciarBuscaminar(){
+    console.log("Iniciar buscaminas");
+    $("#mensajes").empty();
+    crearTablero()
+    colocarBombas(tamaño);
+    addEvents();
+}
+
+function crearTablero() {
+    console.log("Crear tablero");
     casillasProximas = [(-tamaño - 1), -tamaño, (-tamaño + 1), -1, 1, (tamaño - 1), tamaño, (tamaño + 1)];
-    for(let i = 0 ; i < tamaño ; i++){
+    for (let i = 0; i < tamaño; i++) {
         for (let j = 0; j < tamaño; j++) {
             $("#tablero").append("<button id='casilla" + (i * 10 + j) + "' class='tablero'></button>");
         }
     }
-    $("#tablero").css("width", 30 * tamaño + "px");
-    $("#tablero").css("height", 30 * tamaño + "px");
-    // $("#mensajes").css("visibility","hidden");
-    colocarBombas(tamaño);
-    addEvents();
-    $("#mensajes").empty();
-});
+}
 
 function colocarBombas(){
     // let numBombas = Math.floor(tamaño / 2);
