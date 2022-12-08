@@ -32,8 +32,6 @@ $(".resume-icon > ul > li").click(function () {
 
 });
 
-
-
 $("#anteriorApp").click(function(){
     let id = $(".apps[style='display:block']").attr("id");
     $("#" + id).attr("style","display: none");
