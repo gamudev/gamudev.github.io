@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+    const isMobile = navigator.userAgentData.mobile;
     let juego = $("#juego")[0];
     let context = juego.getContext("2d");
     let posX = [], posY = [];
@@ -15,6 +16,10 @@ $(document).ready(function () {
     }
 
     let direccion = BOTON.DERECHA;
+
+    if (isMobile) {
+        añadirBotones();
+    }
 
     iniciarJuego();
 
@@ -115,6 +120,38 @@ $(document).ready(function () {
             return true;
         }
         return false;
+    }
+
+    function añadirBotones() {
+        const botonIzquierda = $('<input id="botonIzquierda" type="button"  value="⇦"/>');
+        const botonArriba = $('<input id="botonArriba" type="button" value="⇧"/>');
+        const botonAbajo = $('<input id="botonAbajo" type="button" value="⇩"/>');
+        const botonDerecha = $('<input id="botonDerecha" type="button" value="⇨"/>');
+        $("body").append(botonIzquierda);
+        $("body").append(botonArriba);
+        $("body").append(botonAbajo);
+        $("body").append(botonDerecha);
+        $("#botonIzquierda").click(function (e) {
+            console.log("pulsado boton izquierda")
+            direccion = BOTON.IZQUIERDA;
+        });
+        $("#botonDerecha").click(function (e) {
+            direccion = BOTON.DERECHA;
+        });
+        $("#botonArriba").click(function (e) {
+            direccion = BOTON.ARRIBA;
+        });
+        $("#botonAbajo").click(function (e) {
+            direccion = BOTON.ABAJO;
+        });
+        $("#contenedorJuego").click(function (e) {
+            if (pause === false) {
+                pause = true;
+            } else {
+                pause = false;
+                mover();
+            };
+        });
     }
 
 });

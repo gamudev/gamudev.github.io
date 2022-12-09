@@ -336,9 +336,9 @@ $(document).ready(function () {
     });
 
     function añadirBotones(){
-        let botonIzquierda = $('<input id="botonIzquierda" type="button"  value="⇦"/>');
-        let botonAbajo = $('<input id="botonAbajo" type="button" value="⇩"/>');
-        let botonDerecha = $('<input id="botonDerecha" type="button" value="⇨"/>');
+        const botonIzquierda = $('<input id="botonIzquierda" type="button"  value="⇦"/>');
+        const botonAbajo = $('<input id="botonAbajo" type="button" value="⇩"/>');
+        const botonDerecha = $('<input id="botonDerecha" type="button" value="⇨"/>');
         $("body").append(botonIzquierda);
         $("body").append(botonAbajo);
         $("body").append(botonDerecha);
