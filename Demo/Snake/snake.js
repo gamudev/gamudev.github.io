@@ -19,6 +19,10 @@ $(document).ready(function () {
 
     if (isMobile) {
         añadirBotones();
+        $("#juego").attr("height", "300");
+    } else {
+        $("#contenedorJuego").append('<img id="consola" src="img/consola.jpg"/>');
+        $("#juego").css("height", "28.9%");
     }
 
     iniciarJuego();
@@ -123,10 +127,10 @@ $(document).ready(function () {
     }
 
     function añadirBotones() {
-        const botonIzquierda = $('<input id="botonIzquierda" type="button"  value="⇦"/>');
-        const botonArriba = $('<input id="botonArriba" type="button" value="⇧"/>');
-        const botonAbajo = $('<input id="botonAbajo" type="button" value="⇩"/>');
-        const botonDerecha = $('<input id="botonDerecha" type="button" value="⇨"/>');
+        const botonIzquierda = $('<input id="botonIzquierda" type="button" class="botones" value="⇦"/>');
+        const botonArriba = $('<input id="botonArriba" type="button" class="botones" value="⇧"/>');
+        const botonAbajo = $('<input id="botonAbajo" type="button" class="botones" value="⇩"/>');
+        const botonDerecha = $('<input id="botonDerecha" type="button" class="botones" value="⇨"/>');
         $("body").append(botonIzquierda);
         $("body").append(botonArriba);
         $("body").append(botonAbajo);
