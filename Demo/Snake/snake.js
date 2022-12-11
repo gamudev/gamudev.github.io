@@ -127,27 +127,6 @@ $(document).ready(function () {
     }
 
     function añadirBotones() {
-        const botonIzquierda = $('<input id="botonIzquierda" type="button" class="botones" value="⇦"/>');
-        const botonArriba = $('<input id="botonArriba" type="button" class="botones" value="⇧"/>');
-        const botonAbajo = $('<input id="botonAbajo" type="button" class="botones" value="⇩"/>');
-        const botonDerecha = $('<input id="botonDerecha" type="button" class="botones" value="⇨"/>');
-        $("body").append(botonIzquierda);
-        $("body").append(botonArriba);
-        $("body").append(botonAbajo);
-        $("body").append(botonDerecha);
-        $("#botonIzquierda").click(function (e) {
-            console.log("pulsado boton izquierda")
-            direccion = BOTON.IZQUIERDA;
-        });
-        $("#botonDerecha").click(function (e) {
-            direccion = BOTON.DERECHA;
-        });
-        $("#botonArriba").click(function (e) {
-            direccion = BOTON.ARRIBA;
-        });
-        $("#botonAbajo").click(function (e) {
-            direccion = BOTON.ABAJO;
-        });
         $("#contenedorJuego").click(function (e) {
             if (pause === false) {
                 pause = true;
@@ -156,6 +135,25 @@ $(document).ready(function () {
                 mover();
             };
         });
+
+
+        $('body').on('click', function (e) {
+            console.log(e.pageX,e.pageY)
+            console.log("La resolución de tu pantalla es: " + screen.width + " x " + screen.height) ;
+
+            if (e.pageX < (screen.width * 0.25) && e.pageY > (screen.height * 0.25) && e.pageY < (screen.height * 0.50)){
+                direccion = BOTON.IZQUIERDA;
+            } else if (e.pageX > (screen.width * 0.75) && e.pageY > (screen.height * 0.25) && e.pageY < (screen.height * 0.50)){
+                direccion = BOTON.DERECHA;
+            } else if (e.pageY < (screen.height * 0.25) && e.pageX > (screen.width * 0.25) && e.pageX < (screen.width * 0.75)){
+                direccion = BOTON.ARRIBA;
+            } else if (e.pageY > (screen.height * 0.75) && e.pageX > (screen.width * 0.25) && e.pageX < (screen.width * 0.75)) {
+                direccion = BOTON.ABAJO;
+            }
+            
+        });
+
+
     }
 
 });
