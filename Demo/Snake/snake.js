@@ -126,8 +126,6 @@ $(document).ready(function () {
     }
 
     function activarControlTactil() {
-        console.log(e.pageX, e.pageY)
-        console.log("La resolución de tu pantalla es: " + screen.width + " x " + screen.height);
         $("#contenedorJuego").click(function (e) {
             if (pause === false) {
                 pause = true;
