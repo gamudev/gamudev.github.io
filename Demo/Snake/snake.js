@@ -126,6 +126,8 @@ $(document).ready(function () {
     }
 
     function activarControlTactil() {
+        console.log(e.pageX, e.pageY)
+        console.log("La resolución de tu pantalla es: " + screen.width + " x " + screen.height);
         $("#contenedorJuego").click(function (e) {
             if (pause === false) {
                 pause = true;
@@ -136,9 +138,9 @@ $(document).ready(function () {
         });
 
         $('body').on('click', function (e) {
-            if (e.pageY < (screen.height * 0.25)){
+            if (e.pageY < (screen.height * 0.33)){
                 direccion = BOTON.ARRIBA;
-            } else if (e.pageY > (screen.height * 0.75)) {
+            } else if (e.pageY > (screen.height * 0.66)) {
                 direccion = BOTON.ABAJO;
             } else if (e.pageX < (screen.width * 0.5)){
                 direccion = BOTON.IZQUIERDA;
