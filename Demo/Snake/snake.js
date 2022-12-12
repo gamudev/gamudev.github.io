@@ -18,8 +18,7 @@ $(document).ready(function () {
     let direccion = BOTON.DERECHA;
 
     if (isMobile) {
-        añadirBotones();
-        $("#juego").attr("height", "300");
+        activarControlTactil();
     } else {
         $("#contenedorJuego").append('<img id="consola" src="img/consola.jpg"/>');
         $("#juego").css("height", "28.9%");
@@ -126,7 +125,7 @@ $(document).ready(function () {
         return false;
     }
 
-    function añadirBotones() {
+    function activarControlTactil() {
         $("#contenedorJuego").click(function (e) {
             if (pause === false) {
                 pause = true;
@@ -136,24 +135,17 @@ $(document).ready(function () {
             };
         });
 
-
         $('body').on('click', function (e) {
-            console.log(e.pageX,e.pageY)
-            console.log("La resolución de tu pantalla es: " + screen.width + " x " + screen.height) ;
-
-            if (e.pageX < (screen.width * 0.25) && e.pageY > (screen.height * 0.25) && e.pageY < (screen.height * 0.50)){
-                direccion = BOTON.IZQUIERDA;
-            } else if (e.pageX > (screen.width * 0.75) && e.pageY > (screen.height * 0.25) && e.pageY < (screen.height * 0.50)){
-                direccion = BOTON.DERECHA;
-            } else if (e.pageY < (screen.height * 0.25) && e.pageX > (screen.width * 0.25) && e.pageX < (screen.width * 0.75)){
+            if (e.pageY < (screen.height * 0.25)){
                 direccion = BOTON.ARRIBA;
-            } else if (e.pageY > (screen.height * 0.75) && e.pageX > (screen.width * 0.25) && e.pageX < (screen.width * 0.75)) {
+            } else if (e.pageY > (screen.height * 0.75)) {
                 direccion = BOTON.ABAJO;
-            }
-            
+            } else if (e.pageX < (screen.width * 0.5)){
+                direccion = BOTON.IZQUIERDA;
+            } else {
+                direccion = BOTON.DERECHA;
+            } 
         });
-
-
     }
 
 });
