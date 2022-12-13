@@ -41,6 +41,11 @@ body {
     margin-bottom: 20px;
 }
 
+#Inicio>img {
+    height: 18vw;
+    min-height: 200px;
+}
+
 .titulo {
     align-items: center;
     text-align: center;
