@@ -13,7 +13,7 @@ $(document).ready(function () {
     let direccion = '';
     let figuras = [];
     let pause = false;
-    let figuraPendiente = undefined;
+    let figuraActual = undefined;
     let numeroFiguras = 0;
     let lineasCompletas = 0;
     let velocidadMovimiento = 200;
@@ -38,6 +38,7 @@ $(document).ready(function () {
         DERECHA: 39,
         PAUSE:32,
         ENTER:13,
+        ROTAR:82,
     }
 
     const COLOR = ['blue','yellow','purple','orange','green', 'brown'];
@@ -52,7 +53,7 @@ $(document).ready(function () {
         direccion = '';
         figuras = [];
         pause = false;
-        figuraPendiente = undefined;
+        figuraActual = undefined;
         numeroFiguras = 0;
         lineasCompletas = 0;
         velocidadMovimiento = 200;
@@ -86,7 +87,7 @@ $(document).ready(function () {
                 velocidadMovimiento = 200;
                 nuevaPieza();
             } else if (pause){
-                figuraPendiente = nuevaFigura;
+                figuraActual = nuevaFigura;
                 return;
             } else {
                 mover(nuevaFigura);
@@ -96,9 +97,11 @@ $(document).ready(function () {
 
     function crearFigura(tipoFigura) {
         numeroFiguras++;
+        let rotacion = '';
         switch (tipoFigura){
             case 0: 
                 tipoFigura = 'I'; 
+                rotacion = 'vertical';
                 puntos = [
                     { ...POS.abajoCen, posicion: ['suelo','izquierda','derecha'] }, 
                     { ...POS.medioCen, posicion: ['izquierda', 'derecha'] }, 
@@ -152,7 +155,7 @@ $(document).ready(function () {
                     { ...POS.abajoDer, posicion: ['techo', 'suelo', 'derecha'] }
                 ]; break;
         }
-        return { id: numeroFiguras, tipoFigura, puntos, siguienteFigura: false, color: COLOR[Math.floor(Math.random() * 6)] };
+        return { id: numeroFiguras, tipoFigura, puntos, siguienteFigura: false, color: COLOR[Math.floor(Math.random() * 6)], rotacion };
     }
 
     function pintarFigura(figura){
@@ -309,6 +312,17 @@ $(document).ready(function () {
         context.stroke();
     }
 
+    function rotarFigura(figura){
+        console.log(figura);
+        if (figura.tipoFigura == 'I' && figura.rotacion == 'vertical'){
+            figura.rotacion = 'horizontal';
+            let y = figura.puntos[1].y;
+            console.log("pos " + y);
+        } else if (figura.tipoFigura == 'I' && figura.rotacion == 'horizontal'){
+            figura.rotacion = 'vertical';
+        }
+    }
+
     $(document).keydown(function (e) {
         const teclaPulsada = e.which;
         switch (teclaPulsada) {
@@ -323,13 +337,17 @@ $(document).ready(function () {
                     iniciarJuego();  
                 } 
                 break;
+            // rotar
+            case BOTON.ROTAR:
+                rotarFigura(figuraActual);
+                break;
             // pause
             case BOTON.PAUSE:
                 if (pause === false) {
                     pause = true;
                 } else {
                     pause = false;
-                    mover(figuraPendiente);
+                    mover(figuraActual);
                 };
                 break;
         }
@@ -359,7 +377,7 @@ $(document).ready(function () {
                 pause = true;
             } else {
                 pause = false;
-                mover(figuraPendiente);
+                mover(figuraActual);
             };
         });
     }
