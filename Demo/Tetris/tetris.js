@@ -11,6 +11,7 @@ $(document).ready(function () {
     let context = juego.getContext("2d");
     
     let direccion = '';
+    let rotar = false;
     let figuras = [];
     let pause = false;
     let figuraActual = undefined;
@@ -159,6 +160,25 @@ $(document).ready(function () {
     }
 
     function pintarFigura(figura){
+        if(rotar == 'true'){
+            if (figura.tipoFigura == 'I' && figura.rotacion == 'vertical') {
+                figura.rotacion = 'horizontal';
+                figura.puntos[0].x = figura.puntos[1].x - TAMAÑO_UNIDAD;
+                figura.puntos[0].y = figura.puntos[1].y;
+                figura.puntos[2].x = figura.puntos[1].x + TAMAÑO_UNIDAD;
+                figura.puntos[2].y = figura.puntos[1].y;
+            } else if (figura.tipoFigura == 'I' && figura.rotacion == 'horizontal') {
+                figura.rotacion = 'vertical';
+                figura.rotacion = 'horizontal';
+                figura.puntos[0].x = figura.puntos[1].x;
+                figura.puntos[0].y = figura.puntos[1].y - TAMAÑO_UNIDAD;
+                figura.puntos[2].x = figura.puntos[1].x;
+                figura.puntos[2].y = figura.puntos[1].y + TAMAÑO_UNIDAD;
+            } else {
+                rotar = false;
+            }
+        }
+
         context.beginPath();
         context.fillStyle = figura.color;
         if(figura.siguienteFigura){
@@ -312,17 +332,6 @@ $(document).ready(function () {
         context.stroke();
     }
 
-    function rotarFigura(figura){
-        console.log(figura);
-        if (figura.tipoFigura == 'I' && figura.rotacion == 'vertical'){
-            figura.rotacion = 'horizontal';
-            let y = figura.puntos[1].y;
-            console.log("pos " + y);
-        } else if (figura.tipoFigura == 'I' && figura.rotacion == 'horizontal'){
-            figura.rotacion = 'vertical';
-        }
-    }
-
     $(document).keydown(function (e) {
         const teclaPulsada = e.which;
         switch (teclaPulsada) {
@@ -339,7 +348,7 @@ $(document).ready(function () {
                 break;
             // rotar
             case BOTON.ROTAR:
-                rotarFigura(figuraActual);
+                rotarFigura = true;
                 break;
             // pause
             case BOTON.PAUSE:
