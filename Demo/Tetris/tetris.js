@@ -11,7 +11,6 @@ $(document).ready(function () {
     let context = juego.getContext("2d");
     
     let direccion = '';
-    let rotar = false;
     let figuras = [];
     let pause = false;
     let figuraActual = undefined;
@@ -19,17 +18,18 @@ $(document).ready(function () {
     let lineasCompletas = 0;
     let velocidadMovimiento = 200;
     let terminar = false;
+    let rotarFigura = false;
 
     const POS = {
-        arribaIzq: { x: 120, y: -60 },
-        arribaCen: { x: 140, y: -60 },
-        arribaDer: { x: 160, y: -60 },
-        medioIzq: { x: 120, y: -40 },
-        medioCen: { x: 140, y: -40 },
-        medioDer: { x: 160, y: -40 },
-        abajoIzq: { x: 120, y: -20 },
-        abajoCen: { x: 140, y: -20 },
-        abajoDer: { x: 160, y: -20 },
+        arribaIzq: { x: 120, y: -60, pos : 1},
+        arribaCen: { x: 140, y: -60, pos: 2 },
+        arribaDer: { x: 160, y: -60, pos: 3 },
+        medioIzq: { x: 120, y: -40, pos: 4 },
+        medioCen: { x: 140, y: -40, pos: 5 },
+        medioDer: { x: 160, y: -40, pos: 6 },
+        abajoIzq: { x: 120, y: -20, pos: 7 },
+        abajoCen: { x: 140, y: -20, pos: 8 },
+        abajoDer: { x: 160, y: -20, pos: 9 },
     }
 
     const BOTON = {
@@ -98,87 +98,66 @@ $(document).ready(function () {
 
     function crearFigura(tipoFigura) {
         numeroFiguras++;
-        let rotacion = '';
         switch (tipoFigura){
             case 0: 
                 tipoFigura = 'I'; 
-                rotacion = 'vertical';
                 puntos = [
-                    { ...POS.abajoCen, posicion: ['suelo','izquierda','derecha'] }, 
-                    { ...POS.medioCen, posicion: ['izquierda', 'derecha'] }, 
-                    { ...POS.arribaCen, posicion: ['techo', 'izquierda', 'derecha'] }
+                    { ...POS.abajoCen }, 
+                    { ...POS.medioCen }, 
+                    { ...POS.arribaCen }
                 ]; break;
             case 1: 
                 tipoFigura = 'T'; 
                 puntos = [
-                    { ...POS.arribaIzq, posicion: ['techo', 'suelo', 'izquierda'] }, 
-                    { ...POS.arribaCen, posicion: ['techo'] }, 
-                    { ...POS.arribaDer, posicion: ['techo', 'suelo', 'derecha'] },
-                    { ...POS.medioCen, posicion: ['suelo', 'izquierda', 'derecha'] }
+                    { ...POS.arribaIzq }, 
+                    { ...POS.arribaCen }, 
+                    { ...POS.arribaDer },
+                    { ...POS.medioCen }
                 ]; break;
             case 2: 
                 tipoFigura = 'O'; 
                 puntos = [
-                    { ...POS.arribaCen, posicion: ['techo', 'izquierda'] }, 
-                    { ...POS.arribaDer, posicion: ['techo', 'derecha'] }, 
-                    { ...POS.medioCen, posicion: ['suelo', 'izquierda'] }, 
-                    { ...POS.medioDer, posicion: ['suelo', 'derecha'] }
+                    { ...POS.arribaCen }, 
+                    { ...POS.arribaDer }, 
+                    { ...POS.medioCen }, 
+                    { ...POS.medioDer }
                 ]; break;
             case 3: 
                 tipoFigura = 'S'; 
-                puntos = [{ ...POS.medioIzq, posicion: ['techo', 'suelo', 'izquierda'] }, 
-                    { ...POS.medioCen, posicion: ['suelo', 'derecha'] }, 
-                    { ...POS.arribaCen, posicion: ['techo', 'izquierda'] }, 
-                    { ...POS.arribaDer, posicion: ['techo', 'suelo', 'derecha'] }
+                puntos = [{ ...POS.medioIzq }, 
+                    { ...POS.medioCen }, 
+                    { ...POS.arribaCen }, 
+                    { ...POS.arribaDer }
                 ]; break;
             case 4: 
                 tipoFigura = 'Z'; 
                 puntos = [
-                    { ...POS.arribaIzq, posicion: ['techo', 'suelo', 'izquierda'] }, 
-                    { ...POS.arribaCen, posicion: ['techo', 'derecha'] }, 
-                    { ...POS.medioCen, posicion: ['suelo', 'izquierda'] }, 
-                    { ...POS.medioDer, posicion: ['techo', 'suelo', 'derecha'] }
+                    { ...POS.arribaIzq }, 
+                    { ...POS.arribaCen }, 
+                    { ...POS.medioCen }, 
+                    { ...POS.medioDer }
                 ]; break;
             case 5: 
                 tipoFigura = 'J'; 
                 puntos = [
-                    { ...POS.arribaCen, posicion: ['techo', 'izquierda', 'derecha'] }, 
-                    { ...POS.medioCen, posicion: ['izquierda', 'derecha'] }, 
-                    { ...POS.abajoCen, posicion: ['suelo', 'derecha'] }, 
-                    { ...POS.abajoIzq, posicion: ['techo', 'suelo', 'izquierda'] }
+                    { ...POS.arribaCen }, 
+                    { ...POS.medioCen }, 
+                    { ...POS.abajoCen }, 
+                    { ...POS.abajoIzq }
                 ]; break;
             case 6: 
                 tipoFigura = 'L'; 
                 puntos = [
-                    { ...POS.arribaCen, posicion: ['techo', 'izquierda', 'derecha'] }, 
-                    { ...POS.medioCen, posicion: ['izquierda', 'derecha'] }, 
-                    { ...POS.abajoCen, posicion: ['suelo', 'izquierda'] }, 
-                    { ...POS.abajoDer, posicion: ['techo', 'suelo', 'derecha'] }
+                    { ...POS.arribaCen }, 
+                    { ...POS.medioCen }, 
+                    { ...POS.abajoCen }, 
+                    { ...POS.abajoDer }
                 ]; break;
         }
-        return { id: numeroFiguras, tipoFigura, puntos, siguienteFigura: false, color: COLOR[Math.floor(Math.random() * 6)], rotacion };
+        return { id: numeroFiguras, tipoFigura, puntos, siguienteFigura: false, color: COLOR[Math.floor(Math.random() * 6)] };
     }
 
     function pintarFigura(figura){
-        if(rotar == 'true'){
-            if (figura.tipoFigura == 'I' && figura.rotacion == 'vertical') {
-                figura.rotacion = 'horizontal';
-                figura.puntos[0].x = figura.puntos[1].x - TAMAÑO_UNIDAD;
-                figura.puntos[0].y = figura.puntos[1].y;
-                figura.puntos[2].x = figura.puntos[1].x + TAMAÑO_UNIDAD;
-                figura.puntos[2].y = figura.puntos[1].y;
-            } else if (figura.tipoFigura == 'I' && figura.rotacion == 'horizontal') {
-                figura.rotacion = 'vertical';
-                figura.rotacion = 'horizontal';
-                figura.puntos[0].x = figura.puntos[1].x;
-                figura.puntos[0].y = figura.puntos[1].y - TAMAÑO_UNIDAD;
-                figura.puntos[2].x = figura.puntos[1].x;
-                figura.puntos[2].y = figura.puntos[1].y + TAMAÑO_UNIDAD;
-            } else {
-                rotar = false;
-            }
-        }
-
         context.beginPath();
         context.fillStyle = figura.color;
         if(figura.siguienteFigura){
@@ -191,6 +170,50 @@ $(document).ready(function () {
             context.stroke();
             return;
         }
+        console.log("Tipo figura: " + figura.tipoFigura);
+        if (rotarFigura == true) {
+            for (let punto of figura.puntos){
+                switch(punto.pos){
+                    case 1: 
+                        punto.x += (2*TAMAÑO_UNIDAD);
+                        punto.pos = 3;
+                        break;
+                    case 2:
+                        punto.x += (1 * TAMAÑO_UNIDAD);
+                        punto.y += (1 * TAMAÑO_UNIDAD);
+                        punto.pos = 6;
+                        break;
+                    case 3:
+                        punto.y += (2 * TAMAÑO_UNIDAD);
+                        punto.pos = 9;
+                        break;
+                    case 4:
+                        punto.x += (1 * TAMAÑO_UNIDAD);
+                        punto.y -= (1 * TAMAÑO_UNIDAD);
+                        punto.pos = 2;
+                        break;
+                    case 6:
+                        punto.x -= (1 * TAMAÑO_UNIDAD);
+                        punto.y += (1 * TAMAÑO_UNIDAD);
+                        punto.pos = 8;
+                        break;
+                    case 7:
+                        punto.y -= (2 * TAMAÑO_UNIDAD);
+                        punto.pos = 1;
+                        break;
+                    case 8:
+                        punto.x -= (1 * TAMAÑO_UNIDAD);
+                        punto.y -= (1 * TAMAÑO_UNIDAD);
+                        punto.pos = 4;
+                        break;
+                    case 9:
+                        punto.x -= (2 * TAMAÑO_UNIDAD);
+                        punto.pos = 7;
+                        break;
+                }
+            } 
+            rotarFigura = false;
+        }
         let moverDireccionY = true, moverDireccionX = true;
         let movX = 0;
         if (direccion === BOTON.IZQUIERDA) {
@@ -201,7 +224,7 @@ $(document).ready(function () {
             direccion = '';
         } 
         for (let punto of figura.puntos) {
-            if ((punto.y + TAMAÑO_UNIDAD) >= HEIGHT || (punto.posicion.includes('suelo') && apoyado(punto, figura.id))) {
+            if ((punto.y + TAMAÑO_UNIDAD) >= HEIGHT || apoyado(punto, figura.id)) {
                 moverDireccionY = false;
                 figura.siguienteFigura = true;
             }
@@ -231,7 +254,7 @@ $(document).ready(function () {
                 continue;
             }
             for(let punto of figura.puntos){
-                if (punto.posicion.includes('techo') && punto.x === puntoActual.x && punto.y === (puntoActual.y + TAMAÑO_UNIDAD)){
+                if (punto.x === puntoActual.x && punto.y === (puntoActual.y + TAMAÑO_UNIDAD)){
                     return true;
                 }
             }
@@ -348,6 +371,7 @@ $(document).ready(function () {
                 break;
             // rotar
             case BOTON.ROTAR:
+                console.log("*** Rotar figura ***");
                 rotarFigura = true;
                 break;
             // pause
