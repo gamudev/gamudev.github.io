@@ -64,7 +64,6 @@ $(document).ready(function () {
     }
 
     function nuevaPieza(){
-        siguienteFigura = false;
         let tipoFigura = Math.floor(Math.random() * 7);
         let figura = crearFigura(tipoFigura);
         console.log(figura);
@@ -79,7 +78,7 @@ $(document).ready(function () {
             pintarFigura(figura);
         }
         setTimeout(function () {
-            if (nuevaFigura.siguienteFigura) {
+            if (nuevaFigura.colocada) {
                 comprobarLineasCompletas();
                 if (comprobarDerrota(nuevaFigura)){
                     terminar = true;
@@ -154,13 +153,13 @@ $(document).ready(function () {
                     { ...POS.abajoDer }
                 ]; break;
         }
-        return { id: numeroFiguras, tipoFigura, puntos, siguienteFigura: false, color: COLOR[Math.floor(Math.random() * 6)] };
+        return { id: numeroFiguras, tipoFigura, puntos, colocada: false, color: COLOR[Math.floor(Math.random() * 6)] };
     }
 
     function pintarFigura(figura){
         context.beginPath();
         context.fillStyle = figura.color;
-        if(figura.siguienteFigura){
+        if (figura.colocada){
             for (let punto of figura.puntos) {
                 context.fillRect(punto.x, punto.y, TAMAÑO_UNIDAD, TAMAÑO_UNIDAD);
                 context.strokeStyle = "black";
@@ -172,47 +171,7 @@ $(document).ready(function () {
         }
         console.log("Tipo figura: " + figura.tipoFigura);
         if (rotarFigura == true) {
-            for (let punto of figura.puntos){
-                switch(punto.pos){
-                    case 1: 
-                        punto.x += (2*TAMAÑO_UNIDAD);
-                        punto.pos = 3;
-                        break;
-                    case 2:
-                        punto.x += (1 * TAMAÑO_UNIDAD);
-                        punto.y += (1 * TAMAÑO_UNIDAD);
-                        punto.pos = 6;
-                        break;
-                    case 3:
-                        punto.y += (2 * TAMAÑO_UNIDAD);
-                        punto.pos = 9;
-                        break;
-                    case 4:
-                        punto.x += (1 * TAMAÑO_UNIDAD);
-                        punto.y -= (1 * TAMAÑO_UNIDAD);
-                        punto.pos = 2;
-                        break;
-                    case 6:
-                        punto.x -= (1 * TAMAÑO_UNIDAD);
-                        punto.y += (1 * TAMAÑO_UNIDAD);
-                        punto.pos = 8;
-                        break;
-                    case 7:
-                        punto.y -= (2 * TAMAÑO_UNIDAD);
-                        punto.pos = 1;
-                        break;
-                    case 8:
-                        punto.x -= (1 * TAMAÑO_UNIDAD);
-                        punto.y -= (1 * TAMAÑO_UNIDAD);
-                        punto.pos = 4;
-                        break;
-                    case 9:
-                        punto.x -= (2 * TAMAÑO_UNIDAD);
-                        punto.pos = 7;
-                        break;
-                }
-            } 
-            rotarFigura = false;
+            rotar(figura);
         }
         let moverDireccionY = true, moverDireccionX = true;
         let movX = 0;
@@ -226,7 +185,7 @@ $(document).ready(function () {
         for (let punto of figura.puntos) {
             if ((punto.y + TAMAÑO_UNIDAD) >= HEIGHT || apoyado(punto, figura.id)) {
                 moverDireccionY = false;
-                figura.siguienteFigura = true;
+                figura.colocada = true;
             }
             if (movX != 0 && ((punto.x + movX) < 0 || (punto.x + movX) > (WIDTH - TAMAÑO_UNIDAD) || apoyadoLateral(punto, figura.id, movX, moverDireccionY))) {
                 moverDireccionX = false;
@@ -306,6 +265,50 @@ $(document).ready(function () {
         return false;
     }
 
+    function rotar(figura){
+        for (let punto of figura.puntos) {
+            switch (punto.pos) {
+                case 1:
+                    punto.x += (2 * TAMAÑO_UNIDAD);
+                    punto.pos = 3;
+                    break;
+                case 2:
+                    punto.x += (1 * TAMAÑO_UNIDAD);
+                    punto.y += (1 * TAMAÑO_UNIDAD);
+                    punto.pos = 6;
+                    break;
+                case 3:
+                    punto.y += (2 * TAMAÑO_UNIDAD);
+                    punto.pos = 9;
+                    break;
+                case 4:
+                    punto.x += (1 * TAMAÑO_UNIDAD);
+                    punto.y -= (1 * TAMAÑO_UNIDAD);
+                    punto.pos = 2;
+                    break;
+                case 6:
+                    punto.x -= (1 * TAMAÑO_UNIDAD);
+                    punto.y += (1 * TAMAÑO_UNIDAD);
+                    punto.pos = 8;
+                    break;
+                case 7:
+                    punto.y -= (2 * TAMAÑO_UNIDAD);
+                    punto.pos = 1;
+                    break;
+                case 8:
+                    punto.x -= (1 * TAMAÑO_UNIDAD);
+                    punto.y -= (1 * TAMAÑO_UNIDAD);
+                    punto.pos = 4;
+                    break;
+                case 9:
+                    punto.x -= (2 * TAMAÑO_UNIDAD);
+                    punto.pos = 7;
+                    break;
+            }
+        }
+        rotarFigura = false;
+    }
+
     function borrarlinea(linea){
         for (let figura of figuras) {
             figura.puntos = figura.puntos
@@ -371,7 +374,6 @@ $(document).ready(function () {
                 break;
             // rotar
             case BOTON.ROTAR:
-                console.log("*** Rotar figura ***");
                 rotarFigura = true;
                 break;
             // pause
