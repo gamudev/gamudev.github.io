@@ -9,12 +9,22 @@
     background-color: gainsboro;
 }
 
-#botonIzquierda,#botonAbajo,#botonDerecha{
+#botonIzquierda,#botonRotar,#botonDerecha{
     position: relative;
     top: 450px;
     left: 10px;
     height: 50px;
     width: 100px;
+    font-size: 40px;
+    text-align: center;
+}
+
+#botonAbajo{
+    position: relative;
+    top: 450px;
+    left: 10px;
+    height: 50px;
+    width: 300px;
     font-size: 40px;
     text-align: center;
 }

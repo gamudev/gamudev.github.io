@@ -392,9 +392,12 @@ $(document).ready(function () {
         const botonIzquierda = $('<input id="botonIzquierda" type="button"  value="⇦"/>');
         const botonAbajo = $('<input id="botonAbajo" type="button" value="⇩"/>');
         const botonDerecha = $('<input id="botonDerecha" type="button" value="⇨"/>');
+        const botonRotar = $('<input id="botonRotar" type="button" value="↻"/>');
         $("body").append(botonIzquierda);
-        $("body").append(botonAbajo);
+        $("body").append(botonRotar);
         $("body").append(botonDerecha);
+        $("body").append("<br>");
+        $("body").append(botonAbajo);
         $("#botonIzquierda").click(function (e) {
             direccion = BOTON.IZQUIERDA;
         });
@@ -403,6 +406,9 @@ $(document).ready(function () {
         });
         $("#botonDerecha").click(function (e) {
             direccion = BOTON.DERECHA;
+        });
+        $("#botonRotar").click(function (e) {
+            rotarFigura = true;
         });
         $("#contenedorJuego").click(function (e) {
             if (terminar) {
