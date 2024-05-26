@@ -7,52 +7,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <link rel="stylesheet" href="styles/default.css">
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-        </script>
 </head>
 
 <body>
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Javier García Muñoz</a>
-            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
-                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarScroll">
-                <ul class="navbar-nav" style="--bs-scroll-height: 400px;">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#Inicio">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#resume">Currículum</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#Portfolio">Portfolio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#Contacto">Contacto</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
     <div id="Inicio">
         <div style="height:60px"></div>
-        <p id="cabeceraInicio">DESARROLLO DE APLICACIONES Y PÁGINAS WEB </p>
-        <p id="cabeceraNombre">MI NOMBRE ES JAVIER GARCÍA, FULL-STACK DEVELOPER. </p>
-        <p id="cabeceraTexto">Esta página es el reflejo del esfuerzo para crecer como profesional dentro de la industria
-            del desarrollo
-            del software. Me he especializado en desarrollo de aplicaciones y páginas web.</p>
         <img src="img/iconJGM.png" alt="icono JGM" />
     </div>
     <div id="resume">
-        <hr>
-        <div class="espacio"></div>
         <div class="resume-icon">
             <ul>
                 <li id="resume-icon-1" class="active" data="resume-content-1">
@@ -63,7 +25,6 @@
                 </li>
             </ul>
         </div>
-
         <div class="resume-content">
             <div id="resume-content-1" class="item active">
                 <div class="content">
@@ -126,44 +87,88 @@
     </div>
 
     <div id="Portfolio">
-        <hr>
-        <div class="espacio"></div>
         <p class="titulo">MIS PROYECTOS</p>
         <div class="containerApps">
-            <button id="anteriorApp" class="buttonApps">⇧</button>
-            <div id="app0" class="apps" style="display:block">
-                <a id="tetris" data-bs-toggle="modal" data-bs-target="#modalApp">
-                    <img width="400" src="img/tetris.JPG" alt="tetris">
-                </a>
+            <div class="cardWrap" id="tetris">
+                <div class="card">
+                    <div class="cardBg" style="background-image: url('./img/tetris.JPG');">
+                    </div>
+                    <div class="cardInfo">
+                        <h3 class="cardTitle">
+                            Tetris
+                        </h3>
+                        <p>Juego de puzzle en el que los jugadores manipulan tetrominós que caen para completar y eliminar líneas
+                        horizontales sin dejar huecos.</p>
+                    </div>
+                </div>
             </div>
-            <div id="app1" class="apps" style="display: none">
-                <a id="snake" data-bs-toggle="modal" data-bs-target="#modalApp">
-                    <img width="400" src="img/snake.JPG" alt="snake">
-                </a>
+            <div class="cardWrap" id="snake">
+                <div class="card">
+                    <div class="cardBg" style="background-image: url('./img/snake.JPG');">
+                    </div>
+                    <div class="cardInfo">
+                        <h3 class="cardTitle">
+                            Snake
+                        </h3>
+                        <p>Juego en el que el jugador controla una serpiente que crece al comer objetos, evitando colisionar con las paredes y
+                        consigo misma.</p>
+                    </div>
+                </div>
             </div>
-            <div id="app2" class="apps" style="display: none">
-                <a id="tresenraya" data-bs-toggle="modal" data-bs-target="#modalApp">
-                    <img width="400" src="img/tresenraya.JPG" alt="tres en raya">
-                </a>
+            <div class="cardWrap" id="buscaminas">
+                <div class="card">
+                    <div class="cardBg" style="background-image: url('./img/buscaminas.JPG');">
+                    </div>
+                    <div class="cardInfo">
+                        <h3 class="cardTitle">
+                            Buscaminas
+                        </h3>
+                        <p>Juego de lógica en el que los jugadores deben descubrir celdas en una cuadrícula sin detonarlas, utilizando pistas
+                        numéricas para evitar las minas ocultas.</p>
+                    </div>
+                </div>
             </div>
-            <div id="app3" class="apps" style="display: none">
-                <a id="calculadora" data-bs-toggle="modal" data-bs-target="#modalApp">
-                    <img width="400" src="img/calculadora.JPG" alt="calculadora">
-                </a>
+            <div class="cardWrap" id="tresenraya">
+                <div class="card">
+                    <div class="cardBg" style="background-image: url('./img/tresenraya.JPG');">
+                    </div>
+                    <div class="cardInfo">
+                        <h3 class="cardTitle">
+                            Tres en raya
+                        </h3>
+                        <p>Juego de estrategia para dos jugadores que se turnan para colocar sus símbolos en una cuadrícula de 3x3, intentando
+                        alinear tres en fila, columna o diagonal.</p>
+                    </div>
+                </div>
             </div>
-            <div id="app4" class="apps" style="display: none">
-                <a id="buscaminas" data-bs-toggle="modal" data-bs-target="#modalApp">
-                    <img width="400" src="img/buscaminas.JPG" alt="buscaminas">
-                </a>
+            <div class="cardWrap" id="parejas">
+                <div class="card">
+                    <div class="cardBg" style="background-image: url('./img/parejas.JPG');">
+                    </div>
+                    <div class="cardInfo">
+                        <h3 class="cardTitle">
+                            Juego memoria
+                        </h3>
+                        <p>Juego de memoria en el que los jugadores voltean dos cartas a la vez,
+                        tratando de encontrar pares coincidentes hasta que todas las cartas se emparejan.</p>
+                    </div>
+                </div>
             </div>
-            <div id="app5" class="apps" style="display: none">
-                <a id="parejas" data-bs-toggle="modal" data-bs-target="#modalApp">
-                    <img width="400" src="img/parejas.JPG" alt="parejas">
-                </a>
+            <div class="cardWrap" id="calculadora">
+                <div class="card">
+                    <div class="cardBg" style="background-image: url('./img/calculadora.JPG');">
+                    </div>
+                    <div class="cardInfo">
+                        <h3 class="cardTitle">
+                            Calculadora
+                        </h3>
+                        <p>Herramienta para realizar operaciones matemáticas básicas, como suma, resta, multiplicación y división, 
+                            proporcionando resultados rápidos y precisos.</p>
+                    </div>
+                </div>
             </div>
-            <button id="siguienteApp" class="buttonApps">⇩</button>
         </div>
-        
+
         <!-- Modal -->
         <div class="modal fade" id="modalApp">
             <div class="modal-dialog modal-fullscreen">
@@ -178,15 +183,12 @@
             </div>
         </div>
     </div>
-    <hr>
     <div id="Contacto">
-        <div class="espacio"></div>
         <p class="titulo">CONTACTO</p>
         <!-- <a href="https://twitter.com/gamudev" target="_blank"><img src="img/twitter.png" alt="icono github" /></a> -->
         <a href="https://github.com/gamudev" target="_blank"><img src="img/github.png" alt="icono github" /></a>
-        <a href="https://www.linkedin.com/in/javier-garcia-mu%C3%B1oz/" target="_blank"><img src="img/linkedin.png"
-            alt="icono linkedin" /></a>
-        <a href="docs/cv.pdf" target="_blank"><img src="img/cv.png" style="height: 80px" alt="icono curriculum" /></a>
+        <a href="docs/cv.pdf" target="_blank"><img src="img/cv.png" alt="icono curriculum" /></a>
+        <a href="https://www.linkedin.com/in/javier-garcia-mu%C3%B1oz/" target="_blank"><img src="img/linkedin.png" alt="icono linkedin" /></a>
     </div>
     <script src="scripts/main.js"></script>
 </body>
