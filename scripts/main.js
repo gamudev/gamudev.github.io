@@ -21,6 +21,7 @@ $(".containerApps > div").click(function(){
             $("#iframe-modal").attr("src", "Demo/Tetris/tetris.html");
             break;
     }
+    openModal();
 });
 
 $(".resume-icon > ul > li").click(function () {
@@ -42,11 +43,11 @@ wrapper.forEach(element => {
         width: element.clientWidth
     };
 
-    element.addEventListener("mousemove", ele => {
+    element.addEventListener("mousemove", component => {
         const card = element.querySelector(".card");
         const cardBg = card.querySelector(".cardBg");
-        state.mouseX = ele.pageX - element.offsetLeft - state.width / 2;
-        state.mouseY = ele.pageY - element.offsetTop - state.height / 2;
+        state.mouseX = component.pageX - element.offsetLeft - state.width / 2;
+        state.mouseY = component.pageY - element.offsetTop - state.height / 2;
 
         // angle in card
         const angleX = (state.mouseX / state.width) * 30;
@@ -66,3 +67,29 @@ wrapper.forEach(element => {
         cardBg.style.transform = `translateX(0px) translateY(0px)`;
     });
 });
+   
+// Obtener elementos del DOM
+const modal = document.getElementById("modal");
+var span = document.getElementsByClassName("close")[0];
+
+// Cuando el usuario hace clic en el botón, abre el modal
+function openModal () {
+    modal.style.display = "block";
+    document.body.classList.add('modal-open'); // Deshabilita el scroll
+    $("#iframe-modal").focus();
+}
+
+// Cuando el usuario hace clic en <span> (x), cierra el modal
+span.onclick = function () {
+    modal.style.display = "none";
+    document.body.classList.remove('modal-open'); // Habilita el scroll
+}
+
+// Cuando el usuario hace clic en cualquier lugar fuera del modal, cierra el modal
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+        document.body.classList.remove('modal-open'); // Habilita el scroll
+    }
+}
+

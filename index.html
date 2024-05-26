@@ -89,7 +89,7 @@
     <div id="Portfolio">
         <p class="titulo">MIS PROYECTOS</p>
         <div class="containerApps">
-            <div class="cardWrap" id="tetris">
+            <div class="cardWrap" id="tetris" data-bs-toggle="modal" data-bs-target="#modalApp">
                 <div class="card">
                     <div class="cardBg" style="background-image: url('./img/tetris.JPG');">
                     </div>
@@ -102,7 +102,7 @@
                     </div>
                 </div>
             </div>
-            <div class="cardWrap" id="snake">
+            <div class="cardWrap" id="snake" data-bs-toggle="modal" data-bs-target="#modalApp">
                 <div class="card">
                     <div class="cardBg" style="background-image: url('./img/snake.JPG');">
                     </div>
@@ -115,7 +115,7 @@
                     </div>
                 </div>
             </div>
-            <div class="cardWrap" id="buscaminas">
+            <div class="cardWrap" id="buscaminas" data-bs-toggle="modal" data-bs-target="#modalApp">
                 <div class="card">
                     <div class="cardBg" style="background-image: url('./img/buscaminas.JPG');">
                     </div>
@@ -128,7 +128,7 @@
                     </div>
                 </div>
             </div>
-            <div class="cardWrap" id="tresenraya">
+            <div class="cardWrap" id="tresenraya" data-bs-toggle="modal" data-bs-target="#modalApp">
                 <div class="card">
                     <div class="cardBg" style="background-image: url('./img/tresenraya.JPG');">
                     </div>
@@ -141,7 +141,7 @@
                     </div>
                 </div>
             </div>
-            <div class="cardWrap" id="parejas">
+            <div class="cardWrap" id="parejas" data-bs-toggle="modal" data-bs-target="#modalApp">
                 <div class="card">
                     <div class="cardBg" style="background-image: url('./img/parejas.JPG');">
                     </div>
@@ -154,7 +154,7 @@
                     </div>
                 </div>
             </div>
-            <div class="cardWrap" id="calculadora">
+            <div class="cardWrap" id="calculadora" data-bs-toggle="modal" data-bs-target="#modalApp">
                 <div class="card">
                     <div class="cardBg" style="background-image: url('./img/calculadora.JPG');">
                     </div>
@@ -168,21 +168,19 @@
                 </div>
             </div>
         </div>
-
-        <!-- Modal -->
-        <div class="modal fade" id="modalApp">
-            <div class="modal-dialog modal-fullscreen">
-                <div id="modalContent " class="modal-content">
-                    <button id="closeModal" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    <div class="embed-container">
-                        <iframe id='iframe-modal' frameborder="0" allowfullscreen scrolling="no"
-                            style="overflow:hidden">
-                        </iframe>
-                    </div>
-                </div>
+    </div>
+    
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="embed-container">
+                <iframe id='iframe-modal' frameborder="0" allowfullscreen scrolling="no" style="overflow:hidden">
+                </iframe>
             </div>
         </div>
     </div>
+
     <div id="Contacto">
         <p class="titulo">CONTACTO</p>
         <!-- <a href="https://twitter.com/gamudev" target="_blank"><img src="img/twitter.png" alt="icono github" /></a> -->
