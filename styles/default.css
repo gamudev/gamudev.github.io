@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Maven+Pro");
-body {
-    font-family: 'Maven Pro' !important;
-    background-color: white !important;
+
+* {
+    font-family: 'Maven Pro';
 }
 
 #Inicio {
@@ -18,7 +18,7 @@ body {
     text-align: center;
     font-size: 2.2em;
     font-weight: bold;
-    margin-bottom: 40px;
+    margin-bottom: 30px;    
 }
 
 #resume {
@@ -55,10 +55,11 @@ body {
     background: #121212;
 }
 
-* {
+#resume>.resume-icon > ul > li > *,
+#resume>.resume-content * {
     margin: 0;
-    text-decoration: none !important;
-    list-style: none !important;
+    text-decoration: none;
+    list-style: none;
 }
 
 @media screen and (min-width: 400px) {
@@ -142,22 +143,24 @@ body {
     font-weight: bold;
 }
 
-#Portfolio{
+#portfolio {
     margin-top: 100px;
 }
 
-#Contacto{
-    margin-top: 140px;
+#contacto {
+    margin-top: 80px;
     text-align: center;
     width: auto;
-    height: 200px;
+    height: 100px;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), #a5b2bff5);
 }
 
-#Contacto > a > img {
+#contacto>a>img {
     height: 50px;
+    margin-top: 30px;
 }
 
-#modalApp{
+#modalApp {
     max-height: 1000px;
     overflow-x: hidden;
     overflow-y: hidden;
@@ -172,7 +175,7 @@ body {
     overflow-y: hidden;
 }
 
-.embed-container > iframe {
+.embed-container>iframe {
     position: absolute;
     top: 0;
     left: 0;
@@ -182,7 +185,7 @@ body {
     overflow-y: hidden;
 }
 
-#closeModal{
+#closeModal {
     font-size: 40px;
     box-sizing: inherit;
     opacity: 1;
@@ -324,4 +327,123 @@ body {
 
 body.modal-open {
     overflow: hidden;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.header-container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #f5f5f5;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    /* Asegura que la barra esté siempre encima del contenido */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 40px);
+    /* Restamos el padding de la anchura total */
+}
+
+.logo {
+    font-size: 24px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.logo-icon {
+    width: 30px;
+    /* Ajustar el tamaño del icono según tus necesidades */
+    height: 30px;
+    margin-right: 10px;
+    /* Espacio entre el icono y el texto */
+    vertical-align: middle;
+    /* Asegura que la imagen esté alineada verticalmente */
+}
+
+nav {
+    flex-grow: 1;
+    /* El nav ocupará todo el espacio restante */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    /* Centra los elementos del menú horizontalmente */
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.header-buttons button {
+    padding: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: transparent;
+    font-size: 18px;
+    color: #333;
+}
+
+.header-buttons button:hover {
+    color: #007bff;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #333;
+    color: #fff;
+}
+
+body.dark-mode .header-container {
+    background-color: #444;
+}
+
+body.dark-mode .logo,
+body.dark-mode nav ul li a {
+    color: #fff;
+}
+
+body.dark-mode .header-buttons button {
+    color: #fff;
+}
+
+body.dark-mode .header-buttons button:hover {
+    color: #007bff;
+}
+
+/* Asegurar que el contenido no quede oculto detrás de la barra de navegación */
+section {
+    scroll-margin-top: 60px;
+    /* Ajustar según la altura de la barra de navegación */
 }

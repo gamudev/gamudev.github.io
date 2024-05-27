@@ -1,20 +1,42 @@
 <html lang="es">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>GAMUDEV</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <link rel="stylesheet" href="styles/default.css">
-    <!-- Bootstrap CSS -->
-</head>
+    <link rel="icon" href="img/iconJGM.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
+</head>
 <body>
-    <div id="Inicio">
+    <!-- <div id="Inicio">
         <div style="height:60px"></div>
         <img src="img/iconJGM.png" alt="icono JGM" />
+    </div> -->
+
+    <div class="header-container">
+        <header>
+            <a class="logo">
+                <img src="img/iconJGM.png" alt="icono JGM" class="logo-icon" />
+                GAMUDEV
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#resume">Sobre mí</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="header-buttons">
+                <button id="theme-toggle"><i class="fas fa-sun"></i></button>
+                <button id="sound-toggle"><i class="fas fa-volume-up"></i></button>
+            </div>
+        </header>
     </div>
-    <div id="resume">
+
+    <section id="resume">
+        <p class="titulo">SOBRE MÍ</p>
         <div class="resume-icon">
             <ul>
                 <li id="resume-icon-1" class="active" data="resume-content-1">
@@ -84,9 +106,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div id="Portfolio">
+    <section  id="portfolio">
         <p class="titulo">MIS PROYECTOS</p>
         <div class="containerApps">
             <div class="cardWrap" id="tetris" data-bs-toggle="modal" data-bs-target="#modalApp">
@@ -168,7 +190,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section >
     
     <!-- Modal -->
     <div id="modal" class="modal">
@@ -181,13 +203,12 @@
         </div>
     </div>
 
-    <div id="Contacto">
-        <p class="titulo">CONTACTO</p>
+    <footer id="contacto">
         <!-- <a href="https://twitter.com/gamudev" target="_blank"><img src="img/twitter.png" alt="icono github" /></a> -->
         <a href="https://github.com/gamudev" target="_blank"><img src="img/github.png" alt="icono github" /></a>
         <a href="docs/cv.pdf" target="_blank"><img src="img/cv.png" alt="icono curriculum" /></a>
         <a href="https://www.linkedin.com/in/javier-garcia-mu%C3%B1oz/" target="_blank"><img src="img/linkedin.png" alt="icono linkedin" /></a>
-    </div>
+    </footer>
     <script src="scripts/main.js"></script>
 </body>
 

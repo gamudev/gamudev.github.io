@@ -49,12 +49,10 @@ wrapper.forEach(element => {
         state.mouseX = component.pageX - element.offsetLeft - state.width / 2;
         state.mouseY = component.pageY - element.offsetTop - state.height / 2;
 
-        // angle in card
         const angleX = (state.mouseX / state.width) * 30;
         const angleY = (state.mouseY / state.height) * -30;
         card.style.transform = `rotateY(${angleX}deg) rotateX(${angleY}deg) `;
 
-        // position of background in card
         const posX = (state.mouseX / state.width) * -40;
         const posY = (state.mouseY / state.height) * -40;
         cardBg.style.transform = `translateX(${posX}px) translateY(${posY}px)`;
@@ -68,24 +66,20 @@ wrapper.forEach(element => {
     });
 });
    
-// Obtener elementos del DOM
 const modal = document.getElementById("modal");
 var span = document.getElementsByClassName("close")[0];
 
-// Cuando el usuario hace clic en el botón, abre el modal
 function openModal () {
     modal.style.display = "block";
     document.body.classList.add('modal-open'); // Deshabilita el scroll
     $("#iframe-modal").focus();
 }
 
-// Cuando el usuario hace clic en <span> (x), cierra el modal
 span.onclick = function () {
     modal.style.display = "none";
     document.body.classList.remove('modal-open'); // Habilita el scroll
 }
 
-// Cuando el usuario hace clic en cualquier lugar fuera del modal, cierra el modal
 window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
@@ -93,3 +87,35 @@ window.onclick = function (event) {
     }
 }
 
+
+document.addEventListener("DOMContentLoaded", function () {
+    const themeToggleButton = document.getElementById("theme-toggle");
+    const soundToggleButton = document.getElementById("sound-toggle");
+
+    // Toggle dark/light mode
+    themeToggleButton.addEventListener("click", function () {
+        document.body.classList.toggle("dark-mode");
+        const icon = themeToggleButton.querySelector("i");
+        if (document.body.classList.contains("dark-mode")) {
+            icon.classList.remove("fa-sun");
+            icon.classList.add("fa-moon");
+        } else {
+            icon.classList.remove("fa-moon");
+            icon.classList.add("fa-sun");
+        }
+    });
+
+    // Toggle sound on/off
+    soundToggleButton.addEventListener("click", function () {
+        const icon = soundToggleButton.querySelector("i");
+        if (icon.classList.contains("fa-volume-up")) {
+            icon.classList.remove("fa-volume-up");
+            icon.classList.add("fa-volume-mute");
+            // Aquí puedes agregar la lógica para desactivar el sonido
+        } else {
+            icon.classList.remove("fa-volume-mute");
+            icon.classList.add("fa-volume-up");
+            // Aquí puedes agregar la lógica para activar el sonido
+        }
+    });
+});
