@@ -1,27 +1,52 @@
-$(".containerApps > div").click(function(){
-    const id = $(this).attr("id");
-    console.log(id)
-    switch(id){
-        case 'buscaminas': 
-            $("#iframe-modal").attr("src","Demo/Buscaminas/buscaminas.html");
-            break;
-        case 'calculadora':
-            $("#iframe-modal").attr("src", "Demo/Calculadora/calculadora.html");
-            break;
-        case 'parejas':
-            $("#iframe-modal").attr("src", "Demo/Encuentra Pareja Fruta/encuentraParejaFruta.html");
-            break;
-        case 'snake': 
-            $("#iframe-modal").attr("src", "Demo/Snake/snake.html");
-            break;
-        case 'tresenraya':
-            $("#iframe-modal").attr("src", "Demo/Tres En Raya/tresEnRaya.html");
-            break;
-        case 'tetris':
-            $("#iframe-modal").attr("src", "Demo/Tetris/tetris.html");
-            break;
+$(document).ready(function () {
+    $(".containerApps > div").click(function () {
+        const id = $(this).attr("id");
+        console.log(id);
+        switch (id) {
+            case 'buscaminas':
+                $("#iframe-modal").attr("src", "Demo/Buscaminas/buscaminas.html");
+                break;
+            case 'calculadora':
+                $("#iframe-modal").attr("src", "Demo/Calculadora/calculadora.html");
+                break;
+            case 'parejas':
+                $("#iframe-modal").attr("src", "Demo/Encuentra Pareja Fruta/encuentraParejaFruta.html");
+                break;
+            case 'snake':
+                $("#iframe-modal").attr("src", "Demo/Snake/snake.html");
+                break;
+            case 'tresenraya':
+                $("#iframe-modal").attr("src", "Demo/Tres En Raya/tresEnRaya.html");
+                break;
+            case 'tetris':
+                $("#iframe-modal").attr("src", "Demo/Tetris/tetris.html");
+                break;
+        }
+        openModal();
+    });
+
+    const modal = document.getElementById("modalApp");
+    const span = document.getElementById("closeModal");
+
+    function openModal() {
+        modal.style.display = "block";
+        document.body.classList.add('modal-open'); // Deshabilita el scroll
+        $("#iframe-modal").focus();
     }
-    openModal();
+
+    span.onclick = function () {
+        modal.style.display = "none";
+        document.body.classList.remove('modal-open'); // Habilita el scroll
+        $("#iframe-modal").attr("src", ""); // Limpiar el src del iframe
+    }
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+            document.body.classList.remove('modal-open'); // Habilita el scroll
+            $("#iframe-modal").attr("src", ""); // Limpiar el src del iframe
+        }
+    }
 });
 
 $(".resume-icon > ul > li").click(function () {
@@ -66,28 +91,6 @@ wrapper.forEach(element => {
     });
 });
    
-const modal = document.getElementById("modal");
-var span = document.getElementsByClassName("close")[0];
-
-function openModal () {
-    modal.style.display = "block";
-    document.body.classList.add('modal-open'); // Deshabilita el scroll
-    $("#iframe-modal").focus();
-}
-
-span.onclick = function () {
-    modal.style.display = "none";
-    document.body.classList.remove('modal-open'); // Habilita el scroll
-}
-
-window.onclick = function (event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-        document.body.classList.remove('modal-open'); // Habilita el scroll
-    }
-}
-
-
 document.addEventListener("DOMContentLoaded", function () {
     const themeToggleButton = document.getElementById("theme-toggle");
     const soundToggleButton = document.getElementById("sound-toggle");
