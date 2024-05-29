@@ -1,4 +1,3 @@
-console.log("Accede a memoria.js");
 let frutas = ["platano", "pera", "kiwi", "sandia", "pera", "sandia", "platano", "kiwi"];
 ordenarAleatorio();
 
@@ -6,27 +5,27 @@ let frutaAnterior = '';
 let frutaAnteriorId = '';
 let contadorOcultas = 4;
 
-function ordenarAleatorio(){
+function ordenarAleatorio() {
     frutas.sort(function () { return Math.random() - 0.5 });
     console.log(frutas);
 }
 
-$(".fruta").click(function(){
-    if ($(this).attr('class') != 'acertada'){
+$(".fruta").click(function () {
+    if ($(this).attr('class') != 'acertada') {
         let id = $(this).attr('id');
         let fruta = frutas[id.substring(5, 6)];
         $(this).attr("src", 'img/' + fruta + '.png');
-        if (frutaAnterior == ''){
+        if (frutaAnterior == '') {
             frutaAnterior = fruta;
             frutaAnteriorId = id;
-        } else if (frutaAnterior != fruta){
+        } else if (frutaAnterior != fruta) {
             //ERROR
             setTimeout(function () {
                 $("#" + frutaAnteriorId).attr("src", 'img/oculto.png');
                 $("#" + id).attr("src", 'img/oculto.png');
                 frutaAnterior = '';
                 frutaAnteriorId = '';
-            },300); 
+            }, 300);
         } else {
             //ACIERTO
             $("#" + frutaAnteriorId).attr("class", 'acertada');
@@ -34,8 +33,8 @@ $(".fruta").click(function(){
             frutaAnterior = '';
             frutaAnteriorId = '';
             contadorOcultas--;
-            if (contadorOcultas == 0){
-                $("body").append("<p class='victoria'>HAS GANADO!! <button onclick='location.reload()'>Jugar de nuevo</button> </p>");
+            if (contadorOcultas == 0) {
+                $("#victoriaMensaje").html("HAS GANADO!! <button onclick='location.reload()'>Jugar de nuevo</button>");
             }
         }
     }

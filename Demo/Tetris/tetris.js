@@ -42,7 +42,7 @@ $(document).ready(function () {
         ROTAR:82,
     }
 
-    const COLOR = ['blue','yellow','purple','orange','green', 'brown'];
+    const COLOR = ['#1E90FF', '#FFD700', '#8A2BE2', '#FF8C00', '#32CD32', '#00CED1'];
 
     if (isMobile) {
         añadirBotones();
@@ -97,6 +97,7 @@ $(document).ready(function () {
 
     function crearFigura(tipoFigura) {
         numeroFiguras++;
+        let puntos;
         switch (tipoFigura){
             case 0: 
                 tipoFigura = 'I'; 
@@ -329,32 +330,32 @@ $(document).ready(function () {
     function finJuego(){
         context.beginPath();
         context.fillStyle = '#FF003B';
-        context.strokeStyle = "black"
-        context.font = "50px Impact";
+        context.strokeStyle = 'black';
+        context.lineWidth = 1;
+        context.font = '50px Impact';
         context.textAlign = 'center';
-        context.fillText("GAME OVER", (WIDTH / 2), 200);
-        context.strokeText("GAME OVER", (WIDTH / 2), 200);
-        context.font = "25px Impact";
-        context.fillText("Press " + (isMobile ? "SCREEN" : "ENTER") + " to restart", (WIDTH / 2), 240);
-        if (!isMobile){
-            context.strokeText("Press ENTER to restart", (WIDTH / 2), 240);
-        }
+        context.fillText('GAME OVER', WIDTH / 2, 200);
+        context.strokeText('GAME OVER', WIDTH / 2, 200);
+        context.fillStyle = '#FFFFFF';
+        context.font = '25px Impact';
+        context.fillText(`Press ${isMobile ? 'SCREEN' : 'ENTER'} to restart`, WIDTH / 2, 240);
+        context.strokeText(`Press ${isMobile ? 'SCREEN' : 'ENTER'} to restart`, WIDTH / 2, 240);
         context.stroke();
     }
 
     function actualizarPuntuacion(){
-        puntuacion = lineasCompletas;
-        pintarPuntuacion();
+        pintarPuntuacion(lineasCompletas);
     }
 
-    function pintarPuntuacion(){
+    function pintarPuntuacion(puntuacion){
         context.beginPath();
-        context.fillStyle = 'white';
-        context.strokeStyle = "black"
+        context.fillStyle = '#FFFFFF'; // Color blanco para la puntuación
+        context.strokeStyle = 'black';
+        context.lineWidth = 1;
         context.font = '20px Impact';
-        context.textAlign = "left";
-        context.fillText("Points: " + puntuacion, 2, 24);
-        context.strokeText("Points: " + puntuacion, 2, 24);
+        context.textAlign = 'left';
+        context.fillText(`Points: ${puntuacion}`, 2, 24);
+        context.strokeText(`Points: ${puntuacion}`, 2, 24);
         context.stroke();
     }
 

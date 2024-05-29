@@ -1,44 +1,63 @@
+document.addEventListener('DOMContentLoaded', () => {
+    let value1 = '';
+    let value2 = '';
+    let operation = '';
+    let resultDisplayed = false;
 
-let value1 = '';
-let value2 = '';
-let operation = '';
+    document.querySelectorAll('.number').forEach(button => {
+        button.addEventListener('click', () => {
+            if (resultDisplayed) {
+                clear();
+                resultDisplayed = false;
+            }
+            if (operation === '') {
+                value1 += button.innerHTML;
+                document.getElementById('resultado').value = value1;
+            } else {
+                value2 += button.innerHTML;
+                document.getElementById('resultado').value = value2;
+            }
+        });
+    });
 
-$(".number").click(function(){
-    if (operation == ''){
-        value1 += $(this)[0].innerHTML;
-        $("#resultado").val(value1);
-    } else {
-        value2 += $(this)[0].innerHTML;
-        $("#resultado").val(value2);
+    document.querySelectorAll('.operation').forEach(button => {
+        button.addEventListener('click', () => {
+            if (button.innerHTML === 'C') {
+                clear();
+            } else if (button.innerHTML === '=') {
+                document.getElementById('resultado').value = calculate();
+                resultDisplayed = true;
+            } else if (button.innerHTML === '%') {
+                document.getElementById('resultado').value = calculatePercentage();
+                resultDisplayed = true;
+            } else {
+                operation = button.innerHTML;
+            }
+        });
+    });
+
+    function calculate() {
+        let number1 = parseFloat(value1);
+        let number2 = parseFloat(value2);
+        switch (operation) {
+            case '+': return (number1 + number2).toFixed(2);
+            case '-': return (number1 - number2).toFixed(2);
+            case '*': return (number1 * number2).toFixed(2);
+            case '/': return (number1 / number2).toFixed(2);
+            case '^': return Math.pow(number1, number2).toFixed(2);
+        }
+        return '';
     }
-}); 
 
-$(".operation").click(function(){
-    if (operation == '' && $(this)[0].innerHTML != 'C'){
-        operation = $(this)[0].innerHTML;
-    } else {
-        $("#resultado").val(calculate());
-        clear();
+    function calculatePercentage() {
+        let number1 = parseFloat(value1);
+        return (number1 / 100).toFixed(2);
+    }
+
+    function clear() {
+        value1 = '';
+        value2 = '';
+        operation = '';
+        document.getElementById('resultado').value = '';
     }
 });
-
-function calculate(){
-    let number1 = parseInt(value1) ;
-    let number2 = parseInt(value2) ;
-    switch(operation){
-        case '+': return (number1 + number2);
-        case '-': return (number1 - number2);
-        case '*': return (number1 * number2);
-        case '/': return parseInt(number1 / number2);
-        case 'C':
-            $("#resultado").val('');
-            clear(); break;
-    }
-    return '';
-}
-
-function clear(){
-    value1 = '';
-    value2 = '';
-    operation = '';
-}
