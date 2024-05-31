@@ -4,16 +4,23 @@
     font-family: 'Maven Pro';
 }
 
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
 .titulo {
     text-align: center;
     font-size: 2.2em;
     font-weight: bold;
-    margin-bottom: 30px;   
+    margin-bottom: 30px;
 }
 
 #resume {
     margin-top: 100px;
-}   
+}
 
 .resume-icon {
     margin-bottom: 30px;
@@ -51,7 +58,7 @@
     background: #121212;
 }
 
-#resume>.resume-icon > ul > li > *,
+#resume>.resume-icon>ul>li>*,
 #resume>.resume-content * {
     margin: 0;
     text-decoration: none;
@@ -299,6 +306,7 @@ body.modal-open {
     height: 100%;
     border: none;
 }
+
 .header-container {
     position: fixed;
     top: 0;
@@ -399,4 +407,71 @@ body.dark-mode .header-buttons button:hover {
 
 section {
     scroll-margin-top: 60px;
+}
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+}
+
+.hero {
+    background-image: url('../img/programador.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-content {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    color: #fff;
+    text-align: center;
+}
+
+.typing-animation {
+    font-size: 2em;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 4px solid #fff;
+    animation: typing 4s steps(40, end), blink-caret .75s step-end infinite, deleting 4s steps(40, end) 4s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes deleting {
+    from {
+        width: 100%;
+    }
+
+    to {
+        width: 0;
+    }
+}
+
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: white;
+    }
 }
