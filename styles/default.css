@@ -481,3 +481,32 @@ html {
         border-color: white;
     }
 }
+
+.titulo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+.content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.collapsible-header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f9f9f9;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.collapsible-body {
+    display: none;
+    padding: 10px;
+    background-color: #f1f1f1;
+}
+
+.collapsible.active .collapsible-body {
+    display: block;
+}

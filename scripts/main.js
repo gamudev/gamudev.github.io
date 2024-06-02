@@ -162,3 +162,37 @@ function deleteText() {
 
 // Start the typing animation
 type();
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const collapsibles = document.querySelectorAll('.collapsible');
+
+    collapsibles.forEach(collapsible => {
+        collapsible.addEventListener('click', () => {
+            collapsible.classList.toggle('active');
+            const body = collapsible.querySelector('.collapsible-body');
+            if (collapsible.classList.contains('active')) {
+                body.style.display = 'block';
+            } else {
+                body.style.display = 'none';
+            }
+        });
+    });
+
+    const icons = document.querySelectorAll('.resume-icon li');
+    const contents = document.querySelectorAll('.resume-content .item');
+
+    icons.forEach(icon => {
+        icon.addEventListener('click', () => {
+            icons.forEach(icon => icon.classList.remove('active'));
+            icon.classList.add('active');
+
+            contents.forEach(content => {
+                content.style.display = 'none';
+            });
+
+            const activeContent = document.getElementById(icon.getAttribute('data'));
+            activeContent.style.display = 'block';
+        });
+    });
+});
