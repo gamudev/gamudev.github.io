@@ -122,3 +122,43 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+const texts = ["SOFTWARE ENGINEER", "FRONTEND DEVELOPER", "BACKEND DEVELOPER"];
+let count = 0;
+let index = 0;
+let currentText = "";
+let letter = "";
+const typingSpeed = 100;
+const deletingSpeed = 50;
+const delayBetweenTexts = 1000;
+const delayAfterDeleting = 500;
+
+function type() {
+    if (count === texts.length) {
+        count = 0;
+    }
+    currentText = texts[count];
+    letter = currentText.slice(0, ++index);
+
+    document.getElementById('typing-text').textContent = letter;
+    if (letter.length === currentText.length) {
+        setTimeout(deleteText, delayBetweenTexts); // Delay before starting to delete
+    } else {
+        setTimeout(type, typingSpeed); // Speed of typing
+    }
+}
+
+function deleteText() {
+    letter = currentText.slice(0, --index);
+    document.getElementById('typing-text').textContent = letter;
+
+    if (letter.length === 0) {
+        count++;
+        setTimeout(type, delayAfterDeleting); // Start typing next text after deleting
+    } else {
+        setTimeout(deleteText, deletingSpeed); // Speed of deleting
+    }
+}
+
+// Start the typing animation
+type();

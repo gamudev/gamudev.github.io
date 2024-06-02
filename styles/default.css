@@ -384,12 +384,12 @@ nav ul li a {
 }
 
 body.dark-mode {
-    background-color: #333;
+    background-color: #0d0d0d;
     color: #fff;
 }
 
 body.dark-mode .header-container {
-    background-color: #444;
+    background-color: #151515;
 }
 
 body.dark-mode .logo,
@@ -408,16 +408,16 @@ body.dark-mode .header-buttons button:hover {
 section {
     scroll-margin-top: 60px;
 }
+
 body,
 html {
     margin: 0;
     padding: 0;
     height: 100%;
-    font-family: 'Arial', sans-serif;
 }
 
 .hero {
-    background-image: url('../img/programador.jpg');
+    background-image: url('../img/fondo.jpg');
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -435,13 +435,19 @@ html {
 }
 
 .typing-animation {
-    font-size: 2em;
+    font-size: 1.3em;
     white-space: nowrap;
     overflow: hidden;
     border-right: 4px solid #fff;
     animation: typing 4s steps(40, end), blink-caret .75s step-end infinite, deleting 4s steps(40, end) 4s;
     animation-iteration-count: infinite;
     animation-direction: alternate;
+}
+
+.name{
+    font-size: 2em;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 @keyframes typing {
