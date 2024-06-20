@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Juego de Evasión Moderno</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1e1e1e;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            -webkit-user-select: none;
+            /* Disables user select on iOS Safari */
+            -webkit-touch-callout: none;
+            /* Disables callout (menu) on iOS Safari */
+            user-select: none;
+            /* Disables text selection */
+        }
+
+        canvas {
+            background-color: #262626;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            border: 2px solid #fff;
+        }
+
+        .difficulty-selector {
+            position: absolute;
+            top: 20px;
+            text-align: center;
+        }
+
+        .difficulty-selector button {
+            background-color: #444;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="difficulty-selector" id="difficultySelector">
+        <h1>Selecciona la Dificultad</h1>
+        <button onclick="startGame('easy')">Fácil</button>
+        <button onclick="startGame('medium')">Medio</button>
+        <button onclick="startGame('hard')">Difícil</button>
+    </div>
+    <canvas id="gameCanvas" width="500" height="600" style="display:none;"></canvas>
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        const playerImage = new Image();
+        playerImage.src = './img/player.png';
+
+        const obstacleImage = new Image();
+        obstacleImage.src = './img/obstacle.png';
+
+        const lifeImage = new Image();
+        lifeImage.src = './img/1up.png';
+
+        const player = {
+            x: canvas.width / 2 - 25,
+            y: canvas.height - 60,
+            width: 50,
+            height: 50,
+            speed: 15,
+            lives: 3
+        };
+
+        const obstacles = [];
+        const obstacleWidth = 50;
+        const obstacleHeight = 50;
+        let obstacleSpeed = 3;
+
+        const lifes = [];
+        const lifeWidth = 25;
+        const lifeHeight = 25;
+        let lifeProportion = 0.01; // Default to medium difficulty proportion
+
+        let gameOver = false;
+        let score = 0;
+        let bestScores = JSON.parse(localStorage.getItem('bestScores')) || [];
+
+        function drawPlayer() {
+            ctx.drawImage(playerImage, player.x, player.y, player.width, player.height);
+        }
+
+        function drawObstacles() {
+            obstacles.forEach(obstacle => {
+                ctx.drawImage(obstacleImage, obstacle.x, obstacle.y, obstacleWidth, obstacleHeight);
+            });
+        }
+
+        function drawLives() {
+            lifes.forEach(life => {
+                ctx.drawImage(lifeImage, life.x, life.y, lifeWidth, lifeHeight);
+            });
+        }
+
+        function updateObstacles() {
+            obstacles.forEach(obstacle => {
+                obstacle.y += obstacleSpeed;
+            });
+            if (Math.random() < 0.02) {
+                const x = Math.random() * (canvas.width - obstacleWidth);
+                obstacles.push({ x: x, y: -obstacleHeight });
+            }
+            obstacles.forEach((obstacle, index) => {
+                if (obstacle.y > canvas.height) {
+                    obstacles.splice(index, 1);
+                    score++;
+                }
+                if (obstacle.x < player.x + player.width &&
+                    obstacle.x + obstacleWidth > player.x &&
+                    obstacle.y < player.y + player.height &&
+                    obstacle.y + obstacleHeight > player.y) {
+                    obstacles.splice(index, 1);
+                    player.lives--;
+                    if (player.lives <= 0) {
+                        gameOver = true;
+                        saveScore();
+                    }
+                }
+            });
+        }
+
+        function updateLives() {
+            lifes.forEach(life => {
+                life.y += obstacleSpeed;
+            });
+            if (Math.random() < lifeProportion) {
+                const x = Math.random() * (canvas.width - lifeWidth);
+                lifes.push({ x: x, y: -lifeHeight });
+            }
+            lifes.forEach((life, index) => {
+                if (life.y > canvas.height) {
+                    lifes.splice(index, 1);
+                }
+                if (life.x < player.x + player.width &&
+                    life.x + lifeWidth > player.x &&
+                    life.y < player.y + player.height &&
+                    life.y + lifeHeight > player.y) {
+                    lifes.splice(index, 1);
+                    player.lives++;
+                }
+            });
+        }
+
+        function drawScore() {
+            ctx.fillStyle = '#fff';
+            ctx.font = '20px Arial';
+            ctx.fillText('Score: ' + score, 10, 30);
+            ctx.fillText('Lives: ' + player.lives, 10, 60);
+        }
+
+        function clearCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function gameLoop() {
+            if (gameOver) {
+                showGameOver();
+                return;
+            }
+
+            clearCanvas();
+            drawPlayer();
+            updateObstacles();
+            drawObstacles();
+            updateLives();
+            drawLives();
+            drawScore();
+
+            requestAnimationFrame(gameLoop);
+        }
+
+        function resetGame() {
+            player.x = canvas.width / 2 - 25;
+            player.y = canvas.height - 60;
+            player.lives = 3;
+            obstacles.length = 0;
+            lifes.length = 0;
+            gameOver = false;
+            score = 0;
+            gameLoop();
+        }
+
+        function startGame(difficulty) {
+            document.getElementById('difficultySelector').style.display = 'none';
+            canvas.style.display = 'block';
+            switch (difficulty) {
+                case 'easy':
+                    obstacleSpeed = 2;
+                    lifeProportion = 0.01;
+                    break;
+                case 'medium':
+                    obstacleSpeed = 4;
+                    lifeProportion = 0.005;
+                    break;
+                case 'hard':
+                    obstacleSpeed = 6;
+                    lifeProportion = 0.001;
+                    break;
+            }
+            resetGame();
+        }
+
+        function showGameOver() {
+            clearCanvas();
+            ctx.fillStyle = '#fff';
+            ctx.font = '50px Arial';
+            ctx.fillText('Game Over', canvas.width / 4, canvas.height / 2);
+            ctx.font = '20px Arial';
+            ctx.fillText('Press any key or tap to restart', canvas.width / 4 - 40, canvas.height / 2 + 40);
+            ctx.fillText('Best Scores:', canvas.width / 4, canvas.height / 2 + 80);
+            bestScores.forEach((score, index) => {
+                ctx.fillText(`${index + 1}. ${score}`, canvas.width / 4, canvas.height / 2 + 110 + index * 30);
+            });
+        }
+
+        function saveScore() {
+            bestScores.push(score);
+            bestScores.sort((a, b) => b - a);
+            if (bestScores.length > 3) {
+                bestScores = bestScores.slice(0, 3);
+            }
+            localStorage.setItem('bestScores', JSON.stringify(bestScores));
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (gameOver) {
+                resetGame();
+            } else {
+                if (e.key === 'ArrowLeft' && player.x > 0) {
+                    player.x -= player.speed;
+                } else if (e.key === 'ArrowRight' && player.x < canvas.width - player.width) {
+                    player.x += player.speed;
+                }
+            }
+        });
+
+        document.addEventListener('touchstart', (e) => {
+            if (gameOver) {
+                resetGame();
+            } else {
+                const touchX = e.touches[0].clientX;
+                const canvasRect = canvas.getBoundingClientRect();
+                if (touchX < canvasRect.left + canvasRect.width / 2 && player.x > 0) {
+                    player.x -= player.speed;
+                } else if (touchX > canvasRect.left + canvasRect.width / 2 && player.x < canvas.width - player.width) {
+                    player.x += player.speed;
+                }
+            }
+        });
+
+        // Prevent double-tap zoom on mobile
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', (e) => {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                e.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+
+        playerImage.onload = () => {
+            showDifficultySelector();
+        };
+
+        function showDifficultySelector() {
+            document.getElementById('difficultySelector').style.display = 'block';
+            canvas.style.display = 'none';
+        }
+        </script>
+    </body>
+
+</html>

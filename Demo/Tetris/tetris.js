@@ -114,13 +114,13 @@ $(document).ready(function () {
         console.log('Altura: ', alturaLineaIzquierda, alturaLineaDerecha) 
         context.beginPath();
         context.fillStyle = "#FFF";
-        context.fillRect(lineaIzquierda, alturaLineaIzquierda, 1, HEIGHT - alturaLineaIzquierda);
+        context.fillRect(lineaIzquierda, alturaLineaIzquierda, 0.4, HEIGHT - alturaLineaIzquierda);
         context.strokeStyle = "black";
         context.stroke();
 
         context.beginPath();
         context.fillStyle = "#FFF";
-        context.fillRect(lineaDerecha, alturaLineaDerecha, 1, HEIGHT - alturaLineaDerecha);
+        context.fillRect(lineaDerecha, alturaLineaDerecha, 0.4, HEIGHT - alturaLineaDerecha);
         context.strokeStyle = "black";
         context.stroke();
     }
