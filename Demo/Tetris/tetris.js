@@ -66,7 +66,6 @@ $(document).ready(function () {
     function nuevaPieza(){
         let tipoFigura = Math.floor(Math.random() * 7);
         let figura = crearFigura(tipoFigura);
-        console.log(figura);
         figuras.push(figura);
         mover(figura);
     }
@@ -93,6 +92,37 @@ $(document).ready(function () {
                 mover(nuevaFigura);
             }
         }, velocidadMovimiento);
+        pintarAyuda(nuevaFigura);
+    }
+
+    function pintarAyuda(figura){
+        let lineaIzquierda = WIDTH;
+        let lineaDerecha = 0 ;
+        let alturaLineaIzquierda = -60;
+        let alturaLineaDerecha = -60;
+        for (let punto of figura.puntos) {
+            if (punto.x <= lineaIzquierda || punto.y > alturaLineaIzquierda){
+                lineaIzquierda = punto.x;
+                alturaLineaIzquierda = punto.y + 20;
+            }
+            if (punto.x >= lineaDerecha || punto.y > alturaLineaDerecha){
+                lineaDerecha = punto.x + 20;
+                alturaLineaDerecha = punto.y + 20;
+            }
+        }
+        console.log('Ancho: ', lineaIzquierda, lineaDerecha)
+        console.log('Altura: ', alturaLineaIzquierda, alturaLineaDerecha) 
+        context.beginPath();
+        context.fillStyle = "#FFF";
+        context.fillRect(lineaIzquierda, alturaLineaIzquierda, 1, HEIGHT - alturaLineaIzquierda);
+        context.strokeStyle = "black";
+        context.stroke();
+
+        context.beginPath();
+        context.fillStyle = "#FFF";
+        context.fillRect(lineaDerecha, alturaLineaDerecha, 1, HEIGHT - alturaLineaDerecha);
+        context.strokeStyle = "black";
+        context.stroke();
     }
 
     function crearFigura(tipoFigura) {
@@ -170,8 +200,7 @@ $(document).ready(function () {
             context.stroke();
             return;
         }
-        console.log("Tipo figura: " + figura.tipoFigura);
-        if (rotarFigura == true) {
+        if (rotarFigura) {
             rotar(figura);
         }
         let moverDireccionY = true, moverDireccionX = true;
@@ -379,11 +408,11 @@ $(document).ready(function () {
                 break;
             // pause
             case BOTON.PAUSE:
-                if (pause === false) {
-                    pause = true;
-                } else {
+                if (pause) {
                     pause = false;
                     mover(figuraActual);
+                } else {
+                    pause = true;
                 };
                 break;
         }
@@ -415,11 +444,11 @@ $(document).ready(function () {
             if (terminar) {
                 iniciarJuego();
             } 
-            if (pause === false) {
-                pause = true;
-            } else {
+            if (pause) {
                 pause = false;
                 mover(figuraActual);
+            } else {
+                pause = true;
             };
         });
     }
