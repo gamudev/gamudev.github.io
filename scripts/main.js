@@ -138,12 +138,14 @@ wrapper.forEach(element => {
         state.mouseX = component.pageX - element.offsetLeft - state.width / 2;
         state.mouseY = component.pageY - element.offsetTop - state.height / 2;
 
-        const angleX = (state.mouseX / state.width) * 30;
-        const angleY = (state.mouseY / state.height) * -30;
+        // Reducir ángulos para evitar rotaciones excesivas
+        const angleX = Math.max(-12, Math.min(12, (state.mouseX / state.width) * 15));
+        const angleY = Math.max(-12, Math.min(12, (state.mouseY / state.height) * -15));
         card.style.transform = `rotateY(${angleX}deg) rotateX(${angleY}deg) `;
 
-        const posX = (state.mouseX / state.width) * -40;
-        const posY = (state.mouseY / state.height) * -40;
+        // Reducir movimiento del fondo
+        const posX = Math.max(-20, Math.min(20, (state.mouseX / state.width) * -20));
+        const posY = Math.max(-20, Math.min(20, (state.mouseY / state.height) * -20));
         cardBg.style.transform = `translateX(${posX}px) translateY(${posY}px)`;
     });
 
