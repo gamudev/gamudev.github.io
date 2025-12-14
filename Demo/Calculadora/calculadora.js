@@ -77,8 +77,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Lista de operaciones válidas para validación
-    const validOperations = ['+', '-', '*', '/', '^', '=', '%', 'C'];
+    // Mapeo de símbolos visuales a operaciones internas
+    const symbolMap = {
+        '×': '*',
+        '−': '-',
+        '+': '+',
+        '/': '/',
+        '^': '^',
+        '=': '=',
+        '%': '%',
+        'C': 'C'
+    };
+
+    // Lista de operaciones válidas para validación (símbolos visuales)
+    const validOperations = ['+', '−', '×', '/', '^', '=', '%', 'C'];
 
     // Event listeners para botones de operación
     document.querySelectorAll('.operation').forEach(button => {
@@ -92,15 +104,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            if (op === 'C') {
+            // Convertir símbolo visual a operación interna
+            const internalOp = symbolMap[op] || op;
+
+            if (internalOp === 'C') {
                 clear();
-            } else if (op === '=') {
+            } else if (internalOp === '=') {
                 const result = calculate();
                 if (result !== null) {
                     resultado.value = result;
                     resultDisplayed = true;
                 }
-            } else if (op === '%') {
+            } else if (internalOp === '%') {
                 const result = calculatePercentage();
                 if (result !== null) {
                     resultado.value = result;
@@ -118,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         return; // Si hay error, no cambiar la operación
                     }
                 }
-                operation = op;
+                operation = internalOp;
                 resultDisplayed = false;
             }
         });
@@ -237,11 +252,13 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             addNumber(key);
         }
-        // Operaciones
+        // Operaciones (mapear teclado a símbolos visuales)
         else if (key === '+' || key === '-' || key === '*' || key === '/') {
             e.preventDefault();
+            // Mapear tecla a símbolo visual
+            const visualSymbol = key === '*' ? '×' : key === '-' ? '−' : key;
             const opButton = Array.from(document.querySelectorAll('.operation'))
-                .find(btn => btn.innerHTML === key);
+                .find(btn => (btn.textContent || btn.innerText || '').trim() === visualSymbol);
             if (opButton) opButton.click();
         }
         // Enter o = para calcular

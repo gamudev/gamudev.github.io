@@ -1,12 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-primary: #E8E9ED;
+    --bg-secondary: #F5F6FA;
+    --shadow-light: #FFFFFF;
+    --shadow-dark: #D1D5DB;
+    --text-primary: #1F2937;
+    --text-secondary: #6B7280;
+    --accent-primary: #6366F1;
+    --accent-secondary: #8B5CF6;
+    --accent-danger: #EF4444;
+    --accent-success: #10B981;
+    --accent-warning: #F59E0B;
+}
+
 body {
-    background-color: #1e1e1e;
-    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
-    color: white;
+    padding: 20px;
+    color: var(--text-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Patrón de fondo sutil */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
 }
 
 /* Accesibilidad - Screen reader only */
@@ -24,121 +64,264 @@ body {
 
 /* Mejorar contraste y foco para accesibilidad */
 button:focus {
-    outline: 3px solid #4a9eff;
-    outline-offset: 2px;
+    outline: 3px solid var(--accent-primary);
+    outline-offset: 4px;
+    border-radius: 20px;
 }
 
 input:focus {
-    outline: 3px solid #4a9eff;
-    outline-offset: 2px;
+    outline: 3px solid var(--accent-primary);
+    outline-offset: 4px;
 }
-    
+
 .container {
+    position: relative;
+    z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #333;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 420px;
 }
 
 .calculadora {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #2c2c2c;
-    border-radius: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 300px;
+    background: var(--bg-secondary);
+    border-radius: 40px;
+    padding: 40px 32px;
+    width: 100%;
+    box-shadow: 
+        20px 20px 60px var(--shadow-dark),
+        -20px -20px 60px var(--shadow-light),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    position: relative;
+    animation: slideIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Pantalla de resultado */
 input {
-    border-radius: 10px;
-    font-family: 'Roboto', sans-serif;
-    color: #333;
-    font-size: 24px;
-    font-weight: bold;
-    background: #e0e0e0;
+    border-radius: 24px;
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--text-primary);
+    font-size: 36px;
+    font-weight: 600;
+    background: var(--bg-secondary);
     border: none;
     width: 100%;
-    height: 60px;
+    height: 100px;
     text-align: right;
-    margin-bottom: 20px;
-    padding: 10px;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 32px;
+    padding: 0 28px;
+    box-shadow: 
+        inset 8px 8px 16px var(--shadow-dark),
+        inset -8px -8px 16px var(--shadow-light);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    letter-spacing: -1px;
+    position: relative;
+    overflow: hidden;
 }
 
+input::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.5;
+}
+
+input:focus {
+    box-shadow: 
+        inset 10px 10px 20px var(--shadow-dark),
+        inset -10px -10px 20px var(--shadow-light),
+        0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+/* Teclado */
 .teclado {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+    gap: 16px;
     width: 100%;
 }
 
 button {
-    border-radius: 10px;
-    font-family: 'Roboto', sans-serif;
-    color: #ffffff;
-    font-size: 18px;
-    background: #555555;
+    border-radius: 20px;
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--text-primary);
+    font-size: 22px;
+    font-weight: 600;
+    background: var(--bg-secondary);
     border: none;
-    padding: 20px;
+    padding: 24px 20px;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background 0.3s ease;
+    box-shadow: 
+        8px 8px 16px var(--shadow-dark),
+        -8px -8px 16px var(--shadow-light);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.5px;
+    min-height: 64px;
 }
 
-button.operation {
-    background: #777777;
+button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(99, 102, 241, 0.1);
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
 }
 
-button.number {
-    background: #4d4d4d;
+button:hover::before {
+    width: 200px;
+    height: 200px;
 }
 
 button:hover {
-    background: #666666;
+    transform: translateY(-2px);
+    box-shadow: 
+        10px 10px 20px var(--shadow-dark),
+        -10px -10px 20px var(--shadow-light);
 }
 
-button.operation:hover {
-    background: #888888;
+button:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: 
+        inset 4px 4px 8px var(--shadow-dark),
+        inset -4px -4px 8px var(--shadow-light);
+}
+
+/* Botones numéricos */
+button.number {
+    color: var(--text-primary);
+    font-weight: 600;
 }
 
 button.number:hover {
-    background: #595959;
+    color: var(--accent-primary);
 }
 
-/* Responsive design para calculadora */
+/* Botones de operación */
+button.operation {
+    color: var(--accent-primary);
+    font-weight: 700;
+}
+
+button.operation:hover {
+    color: var(--accent-secondary);
+    box-shadow: 
+        10px 10px 20px var(--shadow-dark),
+        -10px -10px 20px var(--shadow-light),
+        0 0 20px rgba(99, 102, 241, 0.2);
+}
+
+/* Botón de limpiar */
+button.operation[aria-label="Limpiar"] {
+    color: var(--accent-danger);
+}
+
+button.operation[aria-label="Limpiar"]:hover {
+    color: var(--accent-danger);
+    box-shadow: 
+        10px 10px 20px var(--shadow-dark),
+        -10px -10px 20px var(--shadow-light),
+        0 0 20px rgba(239, 68, 68, 0.2);
+}
+
+/* Botón de igual */
+button.operation[aria-label="Igual"] {
+    background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+    color: white;
+    box-shadow: 
+        8px 8px 16px rgba(99, 102, 241, 0.3),
+        -8px -8px 16px rgba(139, 92, 246, 0.2);
+    grid-column: span 1;
+}
+
+button.operation[aria-label="Igual"]:hover {
+    background: linear-gradient(135deg, var(--accent-secondary) 0%, var(--accent-primary) 100%);
+    box-shadow: 
+        10px 10px 20px rgba(99, 102, 241, 0.4),
+        -10px -10px 20px rgba(139, 92, 246, 0.3),
+        0 0 30px rgba(99, 102, 241, 0.3);
+    transform: translateY(-3px);
+}
+
+button.operation[aria-label="Igual"]:active {
+    box-shadow: 
+        inset 4px 4px 8px rgba(0, 0, 0, 0.2),
+        inset -4px -4px 8px rgba(255, 255, 255, 0.1);
+}
+
+button.operation[aria-label="Igual"]::before {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive design */
 @media screen and (max-width: 480px) {
     body {
         padding: 16px;
     }
     
-    .container {
-        width: 100%;
-        max-width: 100%;
+    .calculadora {
+        padding: 32px 24px;
+        border-radius: 32px;
     }
     
+    input {
+        font-size: 32px;
+        height: 90px;
+        padding: 0 24px;
+        border-radius: 20px;
+        margin-bottom: 28px;
+    }
+    
+    button {
+        font-size: 20px;
+        padding: 20px 16px;
+        border-radius: 18px;
+        min-height: 60px;
+    }
+    
+    .teclado {
+        gap: 14px;
+    }
+}
+
+@media screen and (max-width: 360px) {
     .calculadora {
-        width: 100%;
-        max-width: 100%;
-        padding: 24px 20px;
+        padding: 28px 20px;
         border-radius: 28px;
     }
     
     input {
         font-size: 28px;
-        height: 70px;
+        height: 80px;
         padding: 0 20px;
         border-radius: 18px;
+        margin-bottom: 24px;
     }
     
     button {
         font-size: 18px;
-        padding: 20px 16px;
+        padding: 18px 14px;
         border-radius: 16px;
+        min-height: 56px;
     }
     
     .teclado {
@@ -146,40 +329,15 @@ button.number:hover {
     }
 }
 
-@media screen and (max-width: 360px) {
-    .calculadora {
-        padding: 20px 16px;
-        border-radius: 24px;
-    }
-    
-    input {
-        font-size: 24px;
-        height: 65px;
-        padding: 0 18px;
-        border-radius: 16px;
-        margin-bottom: 20px;
-    }
-    
-    button {
-        font-size: 16px;
-        padding: 18px 14px;
-        border-radius: 14px;
-    }
-    
-    .teclado {
-        gap: 10px;
-    }
-}
-
 /* Mejorar usabilidad táctil en móviles */
 @media (hover: none) and (pointer: coarse) {
     button {
-        min-height: 48px;
-        min-width: 48px;
+        min-height: 56px;
+        min-width: 56px;
     }
     
     button:active {
-        transform: translateY(0) scale(0.96);
+        transform: translateY(0) scale(0.97);
         transition: transform 0.1s;
     }
     
@@ -188,39 +346,33 @@ button.number:hover {
     }
 }
 
-/* Animación de entrada */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
+/* Efecto de pulso en la pantalla cuando hay resultado */
+input:not(:placeholder-shown) {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 
+            inset 8px 8px 16px var(--shadow-dark),
+            inset -8px -8px 16px var(--shadow-light);
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    50% {
+        box-shadow: 
+            inset 8px 8px 16px var(--shadow-dark),
+            inset -8px -8px 16px var(--shadow-light),
+            0 0 0 2px rgba(99, 102, 241, 0.1);
     }
 }
 
-.calculadora {
-    animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Efecto de brillo en hover para pantalla */
-input:hover {
-    position: relative;
-}
-
-input:hover::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    animation: shine 1.5s infinite;
-}
-
-@keyframes shine {
-    0% { left: -100%; }
-    100% { left: 100%; }
+/* Modo oscuro opcional (se puede activar con clase) */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-primary: #1F2937;
+        --bg-secondary: #111827;
+        --shadow-light: #374151;
+        --shadow-dark: #0F172A;
+        --text-primary: #F9FAFB;
+        --text-secondary: #9CA3AF;
+    }
 }

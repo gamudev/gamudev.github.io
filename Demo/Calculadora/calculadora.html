@@ -1,8 +1,10 @@
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Calculadora moderna con diseño neumórfico - GAMUDEV">
     <title>Calculadora - GAMUDEV</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <link rel="stylesheet" href="calculadora.css">
@@ -12,29 +14,42 @@
     <div class="container" role="main">
         <div class="calculadora" role="application" aria-label="Calculadora">
             <label for="resultado" class="sr-only">Resultado de la operación</label>
-            <input type="text" id="resultado" readonly aria-label="Pantalla de la calculadora" aria-live="polite" />
+            <input 
+                type="text" 
+                id="resultado" 
+                readonly 
+                placeholder="0"
+                aria-label="Pantalla de la calculadora" 
+                aria-live="polite" 
+            />
             <div class="teclado" role="group" aria-label="Teclado numérico">
-                <button class="number" aria-label="Siete">7</button>
-                <button class="number" aria-label="Ocho">8</button>
-                <button class="number" aria-label="Nueve">9</button>
-                <button class="operation" aria-label="Limpiar">C</button>
-                <button class="number" aria-label="Cuatro">4</button>
-                <button class="number" aria-label="Cinco">5</button>
-                <button class="number" aria-label="Seis">6</button>
-                <button class="operation" aria-label="Multiplicar">*</button>
-                <button class="number" aria-label="Uno">1</button>
-                <button class="number" aria-label="Dos">2</button>
-                <button class="number" aria-label="Tres">3</button>
-                <button class="operation" aria-label="Dividir">/</button>
-                <button class="number" aria-label="Cero">0</button>
-                <button class="number" aria-label="Punto decimal">.</button>
-                <button class="operation" aria-label="Porcentaje">%</button>
-                <button class="operation" aria-label="Igual">=</button>
-                <button class="operation" aria-label="Sumar">+</button>
-                <button class="operation" aria-label="Restar">-</button>
-                <button class="operation" aria-label="Potencia">^</button>
+                <button class="operation" aria-label="Limpiar" tabindex="1">C</button>
+                <button class="operation" aria-label="Porcentaje" tabindex="2">%</button>
+                <button class="operation" aria-label="Potencia" tabindex="3">^</button>
+                <button class="operation" aria-label="Dividir" tabindex="4">/</button>
+                
+                <button class="number" aria-label="Siete" tabindex="5">7</button>
+                <button class="number" aria-label="Ocho" tabindex="6">8</button>
+                <button class="number" aria-label="Nueve" tabindex="7">9</button>
+                <button class="operation" aria-label="Multiplicar" tabindex="8">×</button>
+                
+                <button class="number" aria-label="Cuatro" tabindex="9">4</button>
+                <button class="number" aria-label="Cinco" tabindex="10">5</button>
+                <button class="number" aria-label="Seis" tabindex="11">6</button>
+                <button class="operation" aria-label="Restar" tabindex="12">−</button>
+                
+                <button class="number" aria-label="Uno" tabindex="13">1</button>
+                <button class="number" aria-label="Dos" tabindex="14">2</button>
+                <button class="number" aria-label="Tres" tabindex="15">3</button>
+                <button class="operation" aria-label="Sumar" tabindex="16">+</button>
+                
+                <button class="number" aria-label="Cero" tabindex="17">0</button>
+                <button class="number" aria-label="Punto decimal" tabindex="18">.</button>
+                <button class="operation" aria-label="Igual" tabindex="19">=</button>
             </div>
         </div>
     </div>
     <script src="calculadora.js"></script>
 </body>
+
+</html>
