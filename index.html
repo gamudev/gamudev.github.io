@@ -2,69 +2,143 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>GAMUDEV</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="styles/default.css">
+    
+    <!-- Primary Meta Tags -->
+    <title>GAMUDEV - Portafolio de Javier Garcia | Desarrollador FullStack</title>
+    <meta name="title" content="GAMUDEV - Portafolio de Javier Garcia | Desarrollador FullStack">
+    <meta name="description" content="Portafolio web de Javier Garcia Muñoz, desarrollador FullStack con experiencia en Java, JavaScript, Spring, PostgreSQL. Proyectos, juegos y aplicaciones web.">
+    <meta name="keywords" content="desarrollador, fullstack, java, javascript, spring, portfolio, programador, software engineer, frontend, backend">
+    <meta name="author" content="Javier Garcia Muñoz">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Spanish">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gamudev.github.io/">
+    <meta property="og:title" content="GAMUDEV - Portafolio de Javier Garcia | Desarrollador FullStack">
+    <meta property="og:description" content="Portafolio web de Javier Garcia Muñoz, desarrollador FullStack con experiencia en Java, JavaScript, Spring, PostgreSQL.">
+    <meta property="og:image" content="https://gamudev.github.io/img/iconJGM.png">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:site_name" content="GAMUDEV">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://gamudev.github.io/">
+    <meta property="twitter:title" content="GAMUDEV - Portafolio de Javier Garcia | Desarrollador FullStack">
+    <meta property="twitter:description" content="Portafolio web de Javier Garcia Muñoz, desarrollador FullStack con experiencia en Java, JavaScript, Spring, PostgreSQL.">
+    <meta property="twitter:image" content="https://gamudev.github.io/img/iconJGM.png">
+    
+    <!-- Favicon -->
     <link rel="icon" href="img/iconJGM.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="img/iconJGM.png">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles/default.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Javier Garcia Muñoz",
+      "url": "https://gamudev.github.io",
+      "image": "https://gamudev.github.io/img/iconJGM.png",
+      "jobTitle": "FullStack Developer",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Avalon Informática y Servicios"
+      },
+      "sameAs": [
+        "https://github.com/gamudev",
+        "https://www.linkedin.com/in/javier-garcia-mu%C3%B1oz/"
+      ],
+      "knowsAbout": [
+        "Java",
+        "JavaScript",
+        "Spring",
+        "Hibernate",
+        "PostgreSQL",
+        "Frontend Development",
+        "Backend Development"
+      ],
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "Universidad Politécnica de Madrid",
+        "degree": "Grado en Ingeniería del Software"
+      }
+    }
+    </script>
 
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
     <div class="header-container">
-        <header>
-            <a class="logo">
-                <img src="img/iconJGM.png" alt="icono JGM" class="logo-icon" />
-                GAMUDEV
+        <header role="banner">
+            <a class="logo" href="#inicio" aria-label="Ir al inicio - GAMUDEV">
+                <img src="img/iconJGM.png" alt="Logo GAMUDEV" class="logo-icon" loading="eager" width="32" height="32" />
+                <span aria-hidden="true">GAMUDEV</span>
             </a>
-            <!-- <nav>
+            <!-- <nav role="navigation" aria-label="Navegación principal">
                 <ul>
                     <li><a href="#resume">Sobre mí</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#contacto">Contacto</a></li>
                 </ul>
             </nav> -->
-            <div class="header-buttons">
-                <button id="theme-toggle"><i class="fas fa-sun"></i></button>
-                <button id="sound-toggle"><i class="fas fa-volume-up"></i></button>
+            <div class="header-buttons" role="toolbar" aria-label="Controles de interfaz">
+                <button id="theme-toggle" aria-label="Cambiar tema" aria-pressed="false">
+                    <i class="fas fa-sun" aria-hidden="true"></i>
+                    <span class="sr-only">Cambiar entre tema claro y oscuro</span>
+                </button>
+                <button id="sound-toggle" aria-label="Activar o desactivar sonido" aria-pressed="false">
+                    <i class="fas fa-volume-up" aria-hidden="true"></i>
+                    <span class="sr-only">Activar o desactivar sonido</span>
+                </button>
             </div>
         </header>
     </div>
-    <section id="inicio">
+    <section id="inicio" role="region" aria-label="Inicio">
         <div class="hero">
             <div class="hero-content">
                 <h1 class="name">JAVIER GARCIA</h1>
-                <span id="typing-text" class="typing-animation"></span>
+                <span id="typing-text" class="typing-animation" aria-live="polite" aria-atomic="true"></span>
             </div>
         </div>
     </section>
-<section id="resume">
-    <h1 class="titulo">SOBRE MÍ</h1>
-    <div class="resume-icon">
+<main id="main-content">
+<section id="resume" role="region" aria-labelledby="resume-title">
+    <h1 id="resume-title" class="titulo">SOBRE MÍ</h1>
+    <div class="resume-icon" role="tablist" aria-label="Secciones del currículum">
         <ul>
-            <li id="resume-icon-1" class="active" data="resume-content-1">
+            <li id="resume-icon-1" class="active" data="resume-content-1" role="tab" aria-selected="true" aria-controls="resume-content-1" tabindex="0">
                 <h6 class="resume-icon-title">EXPERIENCIA</h6>
             </li>
-            <li id="resume-icon-2" data="resume-content-2">
+            <li id="resume-icon-2" data="resume-content-2" role="tab" aria-selected="false" aria-controls="resume-content-2" tabindex="0">
                 <h6 class="resume-icon-title">ESTUDIOS</h6>
             </li>
         </ul>
     </div>
     <div class="resume-content">
-        <div id="resume-content-1" class="item active">
+        <div id="resume-content-1" class="item active" role="tabpanel" aria-labelledby="resume-icon-1">
             <div class="content">
                 <ul>
                     <li class="collapsible">
-                        <div class="collapsible-header">
+                        <div class="collapsible-header" role="button" aria-expanded="false" aria-controls="collapsible-body-1" tabindex="0">
                             <h6 class="sm-title">FullStack Developer <br>@ Avalon Informática y Servicios</h6>
                             <span class="date">Junio 2021 - Actualidad</span>
                         </div>
-                        <div class="collapsible-body">
+                        <div id="collapsible-body-1" class="collapsible-body" role="region" aria-labelledby="collapsible-header-1">
                             <div class="additional-info">
                                 <p>
-                                    <i class="fas fa-map-marker-alt"></i> 
-                                    Madrid, España
-                                    <i class="fas fa-link"></i> 
-                                    <a href="https://www.avaloninformatica.com" target="_blank">avaloninformatica.com</a>
+                                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i> 
+                                    <span class="sr-only">Ubicación:</span> Madrid, España
+                                    <i class="fas fa-link" aria-hidden="true"></i> 
+                                    <a href="https://www.avaloninformatica.com" target="_blank" rel="noopener noreferrer" aria-label="Visitar sitio web de Avalon Informática (se abre en nueva ventana)">avaloninformatica.com</a>
                                 </p>
                                 <p>Desarrollo y mantenimiento de los productos de Arcadia CBOS (BOS centralizado) y Distribución.</p>
                                 <div class="technologies">
@@ -77,7 +151,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <img src="img/avalon.png" alt="Logo Avalon" class="company-logo">
+                            <img src="img/avalon.png" alt="Logo Avalon" class="company-logo" loading="lazy">
                         </div>
                     </li>
                     <li class="collapsible">
@@ -101,7 +175,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <img src="img/telefonica.png" alt="Logo Telefónica" class="company-logo">
+                            <img src="img/telefonica.png" alt="Logo Telefónica" class="company-logo" loading="lazy">
                         </div>
                     </li>
                     <li class="collapsible">
@@ -126,7 +200,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <img src="img/nttdata.png" alt="Logo NTT Data" class="company-logo">
+                            <img src="img/nttdata.png" alt="Logo NTT Data" class="company-logo" loading="lazy">
                         </div>
                     </li>
                     <li class="collapsible">
@@ -152,7 +226,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <img src="img/nttdata.png" alt="Logo NTT Data" class="company-logo">
+                            <img src="img/nttdata.png" alt="Logo NTT Data" class="company-logo" loading="lazy">
                         </div>
                     </li>
                 </ul>
@@ -186,7 +260,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <img src="img/upm.png" alt="Logo UPM" class="company-logo">
+                            <img src="img/upm.png" alt="Logo UPM" class="company-logo" loading="lazy">
                         </div>
                     </li>
                     <li class="collapsible">
@@ -213,7 +287,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <img src="img/upm.png" alt="Logo UPM" class="company-logo">
+                            <img src="img/upm.png" alt="Logo UPM" class="company-logo" loading="lazy">
                         </div>
                     </li>
                 </ul>
@@ -221,14 +295,14 @@
         </div>
     </div>
 </section>
-    <section id="portfolio">
+    <section id="portfolio" role="region" aria-labelledby="portfolio-title">
         <div class="titulo-div">
-            <h1 class="titulo">MIS PROYECTOS</h1>
+            <h1 id="portfolio-title" class="titulo">MIS PROYECTOS</h1>
         </div>
-        <div class="containerApps">
-            <div class="cardWrap" id="tetris" data-bs-toggle="modal" data-bs-target="#modalApp">
+        <div class="containerApps" role="list" aria-label="Lista de proyectos">
+            <div class="cardWrap" id="tetris" data-bs-toggle="modal" data-bs-target="#modalApp" role="listitem" tabindex="0" aria-label="Abrir juego Tetris">
                 <div class="card">
-                    <div class="cardBg" style="background-image: url('./img/tetris.JPG');">
+                    <div class="cardBg" style="background-image: url('./img/tetris.JPG');" loading="lazy">
                     </div>
                     <div class="cardInfo">
                         <h3 class="cardTitle">
@@ -241,7 +315,7 @@
             </div>
             <div class="cardWrap" id="snake" data-bs-toggle="modal" data-bs-target="#modalApp">
                 <div class="card">
-                    <div class="cardBg" style="background-image: url('./img/snake.JPG');">
+                    <div class="cardBg" style="background-image: url('./img/snake.JPG');" loading="lazy">
                     </div>
                     <div class="cardInfo">
                         <h3 class="cardTitle">
@@ -254,7 +328,7 @@
             </div>
             <div class="cardWrap" id="buscaminas" data-bs-toggle="modal" data-bs-target="#modalApp">
                 <div class="card">
-                    <div class="cardBg" style="background-image: url('./img/buscaminas.JPG');">
+                    <div class="cardBg" style="background-image: url('./img/buscaminas.JPG');" loading="lazy">
                     </div>
                     <div class="cardInfo">
                         <h3 class="cardTitle">
@@ -267,7 +341,7 @@
             </div>
             <div class="cardWrap" id="tresenraya" data-bs-toggle="modal" data-bs-target="#modalApp">
                 <div class="card">
-                    <div class="cardBg" style="background-image: url('./img/tresenraya.JPG');">
+                    <div class="cardBg" style="background-image: url('./img/tresenraya.JPG');" loading="lazy">
                     </div>
                     <div class="cardInfo">
                         <h3 class="cardTitle">
@@ -280,7 +354,7 @@
             </div>
             <div class="cardWrap" id="parejas" data-bs-toggle="modal" data-bs-target="#modalApp">
                 <div class="card">
-                    <div class="cardBg" style="background-image: url('./img/parejas.JPG');">
+                    <div class="cardBg" style="background-image: url('./img/parejas.JPG');" loading="lazy">
                     </div>
                     <div class="cardInfo">
                         <h3 class="cardTitle">
@@ -293,7 +367,7 @@
             </div>
             <div class="cardWrap" id="calculadora" data-bs-toggle="modal" data-bs-target="#modalApp">
                 <div class="card">
-                    <div class="cardBg" style="background-image: url('./img/calculadora.JPG');">
+                    <div class="cardBg" style="background-image: url('./img/calculadora.JPG');" loading="lazy">
                     </div>
                     <div class="cardInfo">
                         <h3 class="cardTitle">
@@ -307,23 +381,40 @@
         </div>
     </section >
     
+    </main>
     <!-- Modal -->
-    <div id="modalApp" class="modal">
+    <div id="modalApp" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
         <div class="modal-content">
-            <span id="closeModal" class="close">&times;</span>
+            <span id="closeModal" class="close" aria-label="Cerrar modal" tabindex="0" role="button">&times;</span>
+            <h2 id="modal-title" class="sr-only">Vista previa del proyecto</h2>
             <div class="embed-container">
-                <iframe id="iframe-modal" frameborder="0" allowfullscreen scrolling="no" style="overflow:hidden;"></iframe>
+                <iframe id="iframe-modal" frameborder="0" allowfullscreen scrolling="no" style="overflow:hidden;" title="Vista previa del proyecto" aria-label="Contenido del proyecto" loading="lazy"></iframe>
             </div>
         </div>
     </div>
 
-    <footer id="contacto">
-        <!-- <a href="https://twitter.com/gamudev" target="_blank"><img src="img/twitter.png" alt="icono github" /></a> -->
-        <a href="https://github.com/gamudev" target="_blank"><img src="img/github.png" alt="icono github" /></a>
-        <a href="docs/cv.pdf" target="_blank"><img src="img/cv.png" alt="icono curriculum" /></a>
-        <a href="https://www.linkedin.com/in/javier-garcia-mu%C3%B1oz/" target="_blank"><img src="img/linkedin.png" alt="icono linkedin" /></a>
+    <footer id="contacto" role="contentinfo" aria-label="Información de contacto">
+        <!-- <a href="https://twitter.com/gamudev" target="_blank" rel="noopener noreferrer" aria-label="Visitar perfil de Twitter (se abre en nueva ventana)"><img src="img/twitter.png" alt="icono twitter" /></a> -->
+        <a href="https://github.com/gamudev" target="_blank" rel="noopener noreferrer" aria-label="Visitar perfil de GitHub (se abre en nueva ventana)"><img src="img/github.png" alt="icono github" loading="lazy" width="40" height="40" /></a>
+        <a href="docs/cv.pdf" target="_blank" rel="noopener noreferrer" aria-label="Descargar currículum en PDF (se abre en nueva ventana)"><img src="img/cv.png" alt="icono curriculum" loading="lazy" width="40" height="40" /></a>
+        <a href="https://www.linkedin.com/in/javier-garcia-mu%C3%B1oz/" target="_blank" rel="noopener noreferrer" aria-label="Visitar perfil de LinkedIn (se abre en nueva ventana)"><img src="img/linkedin.png" alt="icono linkedin" loading="lazy" width="40" height="40" /></a>
     </footer>
     <script src="scripts/main.js"></script>
+    
+    <!-- Structured Data for Portfolio -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "GAMUDEV Portfolio",
+      "url": "https://gamudev.github.io",
+      "author": {
+        "@type": "Person",
+        "name": "Javier Garcia Muñoz"
+      },
+      "description": "Portafolio web con proyectos, juegos y aplicaciones desarrolladas por Javier Garcia Muñoz"
+    }
+    </script>
 </body>
 
 </html>

@@ -1,60 +1,124 @@
+// Cache de elementos DOM para mejor rendimiento
+const $containerApps = $(".containerApps > div");
+const $iframeModal = $("#iframe-modal");
+const modalRoutes = {
+    'buscaminas': "Demo/Buscaminas/buscaminas.html",
+    'calculadora': "Demo/Calculadora/calculadora.html",
+    'parejas': "Demo/Encuentra Pareja Fruta/encuentraParejaFruta.html",
+    'snake': "Demo/Snake/snake.html",
+    'tresenraya': "Demo/Tres En Raya/tresEnRaya.html",
+    'tetris': "Demo/Tetris/tetris.html"
+};
+
 $(document).ready(function () {
-    $(".containerApps > div").click(function () {
+    // Función para sanitizar y validar rutas
+    function sanitizeRoute(route) {
+        // Solo permitir rutas relativas que empiecen con "Demo/"
+        if (typeof route !== 'string') return null;
+        if (!route.startsWith('Demo/')) return null;
+        // Remover caracteres peligrosos
+        return route.replace(/[<>\"'%]/g, '');
+    }
+
+    // Usar delegación de eventos para mejor rendimiento
+    $containerApps.on('click', function () {
         const id = $(this).attr("id");
-        console.log(id);
-        switch (id) {
-            case 'buscaminas':
-                $("#iframe-modal").attr("src", "Demo/Buscaminas/buscaminas.html");
-                break;
-            case 'calculadora':
-                $("#iframe-modal").attr("src", "Demo/Calculadora/calculadora.html");
-                break;
-            case 'parejas':
-                $("#iframe-modal").attr("src", "Demo/Encuentra Pareja Fruta/encuentraParejaFruta.html");
-                break;
-            case 'snake':
-                $("#iframe-modal").attr("src", "Demo/Snake/snake.html");
-                break;
-            case 'tresenraya':
-                $("#iframe-modal").attr("src", "Demo/Tres En Raya/tresEnRaya.html");
-                break;
-            case 'tetris':
-                $("#iframe-modal").attr("src", "Demo/Tetris/tetris.html");
-                break;
+        // Validar que el ID existe en las rutas permitidas
+        if (!id || !modalRoutes.hasOwnProperty(id)) {
+            console.warn('ID de proyecto no válido:', id);
+            return;
         }
-        openModal();
+        const route = modalRoutes[id];
+        const sanitizedRoute = sanitizeRoute(route);
+        if (sanitizedRoute) {
+            $iframeModal.attr("src", sanitizedRoute);
+            openModal();
+        }
     });
 
     const modal = document.getElementById("modalApp");
     const span = document.getElementById("closeModal");
+    let previousActiveElement = null;
 
     function openModal() {
+        previousActiveElement = document.activeElement;
         modal.style.display = "block";
+        modal.setAttribute("aria-hidden", "false");
         document.body.classList.add('modal-open'); // Deshabilita el scroll
-        $("#iframe-modal").focus();
+        span.focus(); // Enfocar el botón de cerrar para accesibilidad
     }
 
-    span.onclick = function () {
+    function closeModal() {
         modal.style.display = "none";
+        modal.setAttribute("aria-hidden", "true");
         document.body.classList.remove('modal-open'); // Habilita el scroll
-        $("#iframe-modal").attr("src", ""); // Limpiar el src del iframe
+        $iframeModal.attr("src", ""); // Limpiar el src del iframe para liberar recursos
+        if (previousActiveElement) {
+            previousActiveElement.focus(); // Devolver foco al elemento anterior
+        }
     }
+
+    span.onclick = closeModal;
+    
+    // Soporte para teclado en botón cerrar
+    span.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            closeModal();
+        }
+    });
 
     window.onclick = function (event) {
         if (event.target == modal) {
-            modal.style.display = "none";
-            document.body.classList.remove('modal-open'); // Habilita el scroll
-            $("#iframe-modal").attr("src", ""); // Limpiar el src del iframe
+            closeModal();
         }
     }
+    
+    // Cerrar modal con Escape
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && modal.style.display === "block") {
+            closeModal();
+        }
+    });
 });
 
-$(".resume-icon > ul > li").click(function () {
-    $(".resume-icon > ul > li").attr("class", "");
-    $(this).attr("class", "active");
-    $(".resume-content > div").attr("style","display: none")
-    $("#" + $(this).attr("data")).attr("style", "");
+// Mejorar accesibilidad de tabs del resume
+$(".resume-icon > ul > li").on("click keydown", function (e) {
+    if (e.type === "keydown" && e.key !== "Enter" && e.key !== " ") {
+        return;
+    }
+    if (e.type === "keydown") {
+        e.preventDefault();
+    }
+    
+    $(".resume-icon > ul > li").attr("class", "").attr("aria-selected", "false");
+    $(this).attr("class", "active").attr("aria-selected", "true");
+    $(".resume-content > div").attr("style", "display: none").attr("aria-hidden", "true");
+    const targetId = $(this).attr("data");
+    $("#" + targetId).attr("style", "").attr("aria-hidden", "false");
+});
 
+// Navegación por teclado en tabs
+$(".resume-icon > ul > li").on("keydown", function (e) {
+    const tabs = $(".resume-icon > ul > li");
+    const currentIndex = tabs.index(this);
+    let nextIndex;
+    
+    if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+        e.preventDefault();
+        nextIndex = (currentIndex + 1) % tabs.length;
+        tabs.eq(nextIndex).focus().trigger("click");
+    } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+        e.preventDefault();
+        nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+        tabs.eq(nextIndex).focus().trigger("click");
+    } else if (e.key === "Home") {
+        e.preventDefault();
+        tabs.first().focus().trigger("click");
+    } else if (e.key === "End") {
+        e.preventDefault();
+        tabs.last().focus().trigger("click");
+    }
 });
 
 
@@ -89,29 +153,99 @@ wrapper.forEach(element => {
         card.style.transform = `rotateY(0deg) rotateX(0deg) `;
         cardBg.style.transform = `translateX(0px) translateY(0px)`;
     });
+    
+    // Soporte para teclado en cards
+    element.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            element.click();
+        }
+    });
 });
    
 document.addEventListener("DOMContentLoaded", function () {
     const themeToggleButton = document.getElementById("theme-toggle");
     const soundToggleButton = document.getElementById("sound-toggle");
 
-    // Toggle dark/light mode
-    themeToggleButton.addEventListener("click", function () {
-        document.body.classList.toggle("dark-mode");
+    // Función para aplicar tema
+    function applyTheme(isDark) {
+        if (isDark) {
+            document.body.classList.add("dark-mode");
+        } else {
+            document.body.classList.remove("dark-mode");
+        }
+        updateThemeIcon(isDark);
+        themeToggleButton.setAttribute("aria-pressed", isDark);
+        // Guardar preferencia
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+
+    // Función para actualizar icono del tema
+    function updateThemeIcon(isDark) {
         const icon = themeToggleButton.querySelector("i");
-        if (document.body.classList.contains("dark-mode")) {
+        if (isDark) {
             icon.classList.remove("fa-sun");
             icon.classList.add("fa-moon");
         } else {
             icon.classList.remove("fa-moon");
             icon.classList.add("fa-sun");
         }
+    }
+
+    // Detectar preferencia del sistema
+    function getSystemPreference() {
+        return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+
+    // Cargar tema guardado o usar preferencia del sistema
+    function loadTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        let isDark;
+        
+        if (savedTheme) {
+            isDark = savedTheme === 'dark';
+        } else {
+            // Si no hay preferencia guardada, usar la del sistema
+            isDark = getSystemPreference();
+        }
+        
+        applyTheme(isDark);
+    }
+
+    // Escuchar cambios en la preferencia del sistema
+    if (window.matchMedia) {
+        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        mediaQuery.addEventListener('change', (e) => {
+            // Solo aplicar si no hay preferencia guardada
+            if (!localStorage.getItem('theme')) {
+                applyTheme(e.matches);
+            }
+        });
+    }
+
+    // Cargar tema al iniciar
+    loadTheme();
+
+    // Toggle dark/light mode
+    themeToggleButton.addEventListener("click", function () {
+        const isDark = document.body.classList.contains("dark-mode");
+        applyTheme(!isDark);
+    });
+    
+    // Soporte para teclado en toggle de tema
+    themeToggleButton.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            themeToggleButton.click();
+        }
     });
 
     // Toggle sound on/off
     soundToggleButton.addEventListener("click", function () {
         const icon = soundToggleButton.querySelector("i");
-        if (icon.classList.contains("fa-volume-up")) {
+        const isMuted = icon.classList.contains("fa-volume-up");
+        soundToggleButton.setAttribute("aria-pressed", isMuted ? "true" : "false");
+        if (isMuted) {
             icon.classList.remove("fa-volume-up");
             icon.classList.add("fa-volume-mute");
             // Aquí puedes agregar la lógica para desactivar el sonido
@@ -119,6 +253,14 @@ document.addEventListener("DOMContentLoaded", function () {
             icon.classList.remove("fa-volume-mute");
             icon.classList.add("fa-volume-up");
             // Aquí puedes agregar la lógica para activar el sonido
+        }
+    });
+    
+    // Soporte para teclado en toggle de sonido
+    soundToggleButton.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            soundToggleButton.click();
         }
     });
 });
@@ -168,14 +310,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const collapsibles = document.querySelectorAll('.collapsible');
 
     collapsibles.forEach(collapsible => {
-        collapsible.addEventListener('click', () => {
-            collapsible.classList.toggle('active');
-            const body = collapsible.querySelector('.collapsible-body');
-            if (collapsible.classList.contains('active')) {
-                body.style.display = 'flex'; // Cambiar a 'flex' para mantener el diseño CSS
-            } else {
-                body.style.display = 'none';
-            }
-        });
+        const header = collapsible.querySelector('.collapsible-header');
+        const body = collapsible.querySelector('.collapsible-body');
+        
+        if (header) {
+            header.addEventListener('click', () => {
+                const isActive = collapsible.classList.toggle('active');
+                header.setAttribute('aria-expanded', isActive);
+                if (isActive) {
+                    body.style.display = 'flex'; // Cambiar a 'flex' para mantener el diseño CSS
+                } else {
+                    body.style.display = 'none';
+                }
+            });
+            
+            // Soporte para teclado
+            header.addEventListener('keydown', (e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    header.click();
+                }
+            });
+        }
     });
 });

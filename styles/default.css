@@ -11,6 +11,35 @@ html {
     height: 100%;
 }
 
+/* Accesibilidad - Skip link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #000;
+    color: #fff;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 100;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Accesibilidad - Screen reader only */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
 .titulo {
     text-align: center;
     font-size: 2.2em;
@@ -69,6 +98,50 @@ html {
     padding-left: clamp(5%, 25%, 50%);
     padding-right: clamp(5%, 10%, 20%);
     width: 50%;
+}
+
+/* Responsive design para sección resume */
+@media screen and (max-width: 1024px) {
+    .resume-content {
+        width: 70%;
+        padding-left: clamp(5%, 15%, 30%);
+        padding-right: clamp(5%, 10%, 20%);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .resume-content {
+        width: 90%;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    
+    .resume-icon li {
+        padding: 8px 20px;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .resume-content {
+        width: 95%;
+        padding-left: 2.5%;
+        padding-right: 2.5%;
+    }
+    
+    .resume-icon li {
+        padding: 6px 15px;
+        font-size: 12px;
+        min-width: 80px;
+    }
+    
+    .sm-title {
+        font-size: 16px;
+    }
+    
+    .resume-content li .date {
+        font-size: 14px;
+    }
 }
 
 .resume-content li {
@@ -140,6 +213,50 @@ html {
     justify-content: center;
     align-items: center;
     gap: 3rem;
+    padding: 20px;
+}
+
+/* Responsive design para cards de proyectos */
+@media screen and (max-width: 768px) {
+    .containerApps {
+        gap: 2rem;
+        padding: 15px;
+    }
+    
+    .card {
+        width: 280px;
+        height: 280px;
+    }
+    
+    .cardInfo {
+        width: 240px;
+        padding: 15px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .containerApps {
+        gap: 1.5rem;
+        padding: 10px;
+    }
+    
+    .card {
+        width: 260px;
+        height: 260px;
+    }
+    
+    .cardInfo {
+        width: 220px;
+        padding: 12px;
+    }
+    
+    .cardInfo h3 {
+        font-size: 18px;
+    }
+    
+    .cardInfo p {
+        font-size: 14px;
+    }
 }
 
 .cardWrap {
@@ -200,6 +317,9 @@ html {
     transition: 1s cubic-bezier(0.445, 0.05, 0.55, 0.95),
         opacity 5s 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
     pointer-events: none;
+    /* Optimización de renderizado */
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 .cardInfo {
@@ -262,6 +382,32 @@ body.modal-open {
     animation: animatetop 0.4s;
 }
 
+/* Responsive design para modal */
+@media screen and (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        height: 90%;
+        margin: 20px auto;
+        max-height: 90vh;
+    }
+    
+    .close {
+        font-size: 32px;
+        top: 5px;
+        right: 15px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .modal-content {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        border-radius: 0;
+        max-height: 100vh;
+    }
+}
+
 @keyframes animatetop {
     from {
         top: -300px;
@@ -318,6 +464,37 @@ body.modal-open {
     align-items: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+}
+
+/* Responsive design para header */
+@media screen and (max-width: 768px) {
+    .header-container {
+        padding: 8px 15px;
+    }
+    
+    .logo {
+        font-size: 18px;
+    }
+    
+    .header-buttons button {
+        font-size: 16px;
+        padding: 4px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .header-container {
+        padding: 6px 10px;
+    }
+    
+    .logo {
+        font-size: 16px;
+    }
+    
+    .logo-icon {
+        width: 24px;
+        height: 24px;
+    }
 }
 
 header {
@@ -424,6 +601,38 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
+    /* Optimización de renderizado */
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+/* Responsive design para hero */
+@media screen and (max-width: 768px) {
+    .hero-content {
+        padding: 15px;
+    }
+    
+    .name {
+        font-size: 1.5em;
+    }
+    
+    .typing-animation {
+        font-size: 1.1em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hero-content {
+        padding: 12px;
+    }
+    
+    .name {
+        font-size: 1.2em;
+    }
+    
+    .typing-animation {
+        font-size: 0.9em;
+    }
 }
 
 .hero-content {

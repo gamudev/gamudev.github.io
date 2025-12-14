@@ -1,0 +1,43 @@
+{
+  "name": "gamudev-portfolio",
+  "version": "1.0.0",
+  "description": "Portafolio web personal de Javier Garcia Muñoz - Desarrollador FullStack",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 8000 -o",
+    "dev": "npx http-server -p 8000 -o -c-1",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gamudev/gamudev.github.io.git"
+  },
+  "keywords": [
+    "portfolio",
+    "web",
+    "developer",
+    "javascript",
+    "html",
+    "css",
+    "games",
+    "calculadora",
+    "tetris",
+    "snake"
+  ],
+  "author": {
+    "name": "Javier Garcia Muñoz",
+    "email": "",
+    "url": "https://github.com/gamudev"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gamudev/gamudev.github.io/issues"
+  },
+  "homepage": "https://gamudev.github.io",
+  "devDependencies": {},
+  "dependencies": {},
+  "engines": {
+    "node": ">=12.0.0"
+  }
+}
+

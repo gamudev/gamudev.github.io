@@ -9,6 +9,30 @@ body {
     color: white;
 }
 
+/* Accesibilidad - Screen reader only */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Mejorar contraste y foco para accesibilidad */
+button:focus {
+    outline: 3px solid #4a9eff;
+    outline-offset: 2px;
+}
+
+input:focus {
+    outline: 3px solid #4a9eff;
+    outline-offset: 2px;
+}
+    
 .container {
     display: flex;
     justify-content: center;
@@ -84,4 +108,71 @@ button.operation:hover {
 
 button.number:hover {
     background: #595959;
+}
+
+/* Responsive design para calculadora */
+@media screen and (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 15px;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .calculadora {
+        width: 100%;
+        max-width: 100%;
+        padding: 15px;
+    }
+    
+    input {
+        font-size: 20px;
+        height: 50px;
+        padding: 8px;
+    }
+    
+    button {
+        font-size: 16px;
+        padding: 15px;
+    }
+    
+    .teclado {
+        gap: 8px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .calculadora {
+        padding: 10px;
+    }
+    
+    input {
+        font-size: 18px;
+        height: 45px;
+    }
+    
+    button {
+        font-size: 14px;
+        padding: 12px;
+    }
+    
+    .teclado {
+        gap: 6px;
+    }
+}
+
+/* Mejorar usabilidad táctil en móviles */
+@media (hover: none) and (pointer: coarse) {
+    button {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    button:active {
+        transform: scale(0.95);
+        transition: transform 0.1s;
+    }
 }
